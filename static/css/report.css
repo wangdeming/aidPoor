@@ -1,0 +1,224 @@
+@font-face {
+	font-family:"Yuanti-SC-Light";
+	src: url('../font/Yuanti-SC-Light.ttf');
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-image: url(../img/economy_home/bg.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+.main {
+	font-family: "Yuanti-SC-Light";
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	min-width: 1200px;
+	letter-spacing: 0px;
+	color: #00fee9;
+	font-size: 14px;
+	width: 1200px;
+	margin: 34px auto 0;
+}
+
+dl dt,dl dd,ul li {
+	margin: 0 auto;
+	color: #00fee9;
+	list-style: none;
+}
+/*left*/
+.left {
+	width: 400px;
+	height: 801px;
+	float: left;
+	background-color: rgba(0, 0, 0, 0.3);
+	background-image: url(../img/l1.png);
+}
+
+.left header {
+	width: 370px;
+	background-image: url(../img/t2.png);
+	background-color: rgba(0, 254, 233, 0.2);
+	height: 48px;
+	font-size: 15px;
+	text-align: center;
+	border: 1px solid #00fee9;
+	line-height: 48px;
+	margin: 16px auto 0;
+}
+
+.left .content {
+	width: 370px;
+	margin: 10px auto;
+	margin-top: 22px;
+	font-size: 18px;
+}
+
+.tit {
+	height: 30px;
+	width: 370px;
+	margin: 0 auto;
+}
+
+.tit span {
+	float: left;
+	width: 70px;
+	border: 1px solid #00fee9;
+	border-bottom: none;
+	height: 30px;
+	line-height: 30px;
+	font-size: 18px;
+	text-align: center;
+	margin-left: 2px;
+}
+
+.conul .tab {
+	display: none;
+	height: 100%;
+	width: 370px;
+	text-align: center;
+}
+
+.tit span.select {
+	background-color: rgba(0, 254, 233, 0.15);
+}
+
+.conul li.show {
+	display: block;
+}
+
+.table {
+	border-collapse: collapse;
+	margin-top: 25px;
+	line-height: 37px;
+	font-size: 14px;
+	width:370px;
+	height: 640px;
+	overflow: hidden;
+
+}
+.table::-webkit-scrollbar {
+	display: none;
+}
+.table-row-group {
+	height: 87%;
+	width: 390px;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.table-row {
+	display: table-row;
+}
+
+.table-cell {
+	display: table-cell;
+}
+
+.w207 {
+	width: 225px;
+	text-align: left;
+}
+
+.w75 {
+	width: 57px;
+}
+
+.w108 {
+	width: 108px;
+	text-align: center;
+}
+
+.center {
+	width: 380px;
+	margin-left: 10px;
+	float: left;
+	background-color: rgba(0, 0, 0, 0.3);
+	min-height: 800px;
+}
+
+.center .c1 {
+	width: 380px;
+	height: 395px;
+	background-image: url(../img/mid.png);
+	float: left;
+}
+
+.center .c1 header ,.right .r2 header {
+	width: 352px;
+	background-image: url(../img/t1.png);
+	background-color: rgba(0, 254, 233, 0.2);
+	height: 48px;
+	font-size: 15px;
+	text-align: center;
+	border: 1px solid #00fee9;
+	line-height: 48px;
+	margin: 16px auto 0;
+}
+
+.mt10 {
+	margin-top: 10px;
+}
+
+.center .chart1  {
+	height: 300px;
+	width: 95%;
+	margin: 20px auto 0;
+}
+.center .chart2 {
+	height: 400px;
+	width: 95%;
+	margin: -37px auto 0;
+}
+.right {
+	width: 400px;
+	margin-left: 10px;
+	float: left;
+	min-height: 600px;
+}
+
+.right .r1 {
+	width: 400px;
+	height: 272px;
+	background-color: rgba(0, 0, 0, 0.3);
+	float: left;
+	background-image: url(../img/rt.png);
+}
+
+.right .r2 {
+	margin-top: 13px;
+	width: 400px;
+	height: 518px;
+	background-color: rgba(0, 0, 0, 0.3);
+	float: left;
+	background-image: url(../img/rb.png);
+}
+
+.right .chart3 {
+	height: 400px;
+	width: 95%;
+	margin: 20px auto 0;
+}
+
+.right .bluefont {
+	color: #00a8ff;
+	font-size: 16px;
+	display: block;
+}
+
+.right .content .smallfont {
+	width: 140px;
+}
+
+.right .content .line2time {
+	width: 30;
+	margin-left: 13px;
+}

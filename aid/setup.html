@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+		<title>精准扶贫应用系统</title>
+		<link rel="shortcut icon" type="image/x-icon" href="favicon_aid.ico" />
+		<link rel="stylesheet" href="../static/layui/css/layui.css"/>
+		<link rel="stylesheet" href="../static/css/aid/common.css"/>
+		<link rel="stylesheet" href="../static/css/aid/setup.css" />
+	</head>
+	<body>
+		<header>
+			<!--<div class="logo">-->
+				<!--<img src="../static/img/aid/logo.png" />-->
+			<!--</div>-->
+			<!--<nav class="topnav">-->
+			    <!--<ul>-->
+			        <!--<li><a href="map.html">扶贫对象</a></li>-->
+			        <!--<li><a href="help.html?flag=help-combine">帮扶结对管理</a></li>-->
+			        <!--<li><a href="measures.html?projectCategory=1">帮扶任务</a></li>-->
+			        <!--<li><a href="fpdxfx.html">数据中心</a></li>-->
+			        <!--<li  class="active_li"><a href="setup.html">基础设置</a></li>-->
+			    <!--</ul>-->
+			<!--</nav>-->
+			<!--<div class="setupDiv">-->
+				<!--<span>你好,</span>-->
+			    <!--<div class="userDiv" id="userBtn">-->
+					<!--<span id="userName">admin</span>-->
+					<!--<img src="../static/img/users.png"/>			     -->
+			    <!--</div>-->
+				<!--<div class="showDiv hidden" id="showDiv">-->
+					<!--<a onclick="jumpToSetup()">个人信息</a>-->
+					<!--<a onclick="loginoutBtnClick()">退出登录</a>-->
+				<!--</div>-->
+			<!--</div>-->
+		</header>		
+		<div class="mainContainer">
+			<div class="container_leftNav">
+				<div class="leftNav navActive" id="navBtnOne">
+					<span>个人信息</span>
+				</div>
+				<div class="leftNav" id="navBtnTwo">
+					<span>单位信息</span>
+				</div>
+			</div>
+			<div class="container_right_one" id="right_one">
+				<div class="leftDiv">
+					<img src="../static/img/aid/header.svg" />
+					<span class="user_name" id="userName2"></span>
+					<span class="user_role" id="userRole"></span>
+					<a onclick="changePwd()">修改密码</a>
+				</div>
+				<div class="rightDiv">
+					<div class="rightDivHeader">基本资料</div>
+					<label>所属单位</label>
+					<label>姓名</label>
+					<input id="ssdwInput" type="text" value="" disabled />
+					<input id="nameInput" type="text" value="" disabled />
+					<label>账号</label>
+					<label>性别</label>
+					<input id="accountInput" type="text" value="" disabled />
+					<select id="sexSelect" disabled>
+						
+					</select>					
+					<label>角色</label>
+					<label>政治面貌</label>
+					<input id="roleInput" type="text" value="" disabled />
+					<select id="zzmmSelect" disabled>
+						
+					</select>
+					<label>联系电话</label>
+					<label>电子邮箱</label>
+					<input id="phoneInput" type="tel" value="" disabled />
+					<input id="emailInput" type="email" value="" disabled />
+					<div class="rightDivHeader">帮扶结对</div>
+					<label>帮扶对象</label>
+					<label></label>
+					<input id="bfdxInput" type="text" value="" disabled />
+					<label></label>
+					<a id="personEditBtn" class="editBtn" onclick="personEditBtnClick()">编辑</a>
+					<a id="personCancelBtn" class="cancel_edit_btn hidden" onclick="personEditCancel()">取消</a>
+					<a id="personSureBtn" class="sure_edit_btn hidden" onclick="personEditSure()">确定</a>
+				</div>
+			</div>
+			<div class="container_right_two hidden" id="right_two">
+				<div class="leftDiv">
+					<img src="../static/img/aid/header.svg" />
+					<span class="user_name" id="unitName"></span>
+					<span class="user_role" id="memberNum"></span>
+				</div>
+				<div class="rightDiv">
+					<div class="rightDivHeader">基本资料</div>
+					<label>单位编号</label>
+					<label>单位名称</label>
+					<input id="unitNumInput" type="text" value="" disabled />
+					<input id="unitNameInput" type="text" value="" disabled />
+					<label>单位简称</label>
+					<label>所在地</label>
+					<input id="unitShorthandInput" type="text" value="" disabled />
+					<input id="unitPlaceInput" type="text" value="" disabled />
+					<label>管理员姓名</label>
+					<label>联系电话</label>
+					<input id="adminNameInput" type="text" value="" disabled />
+					<input id="unitPhoneInput" type="text" value="" disabled />
+					<label>电子邮箱</label>
+					<label></label>					
+					<input id="unitEmailInput" type="email" value="" disabled />
+					<label></label>
+					<div class="rightDivHeader">帮扶结对</div>
+					<label>贫困村</label>
+					<label></label>
+					<input id="pkcInput" type="text" value="" disabled />
+					<label></label>
+					<a id="unitEditBtn" class="editBtn" onclick="unitEditBtnClick()">编辑</a>
+					<a id="unitCancelBtn" class="cancel_edit_btn hidden" onclick="unitEditCancel()">取消</a>
+					<a id="unitSureBtn" class="sure_edit_btn hidden" onclick="unitEditSure()">确定</a>
+				</div>
+			</div>
+		</div>
+		
+		<!--弹窗登录-->
+		<div class="ui-mask" id="mask"></div>
+		<div class="ui-dialog" id="dialogMove">
+			<div class="ui-dialog-title">
+				<span class="titleName">修改密码</span>
+		        <a class="ui-dialog-closebutton" href="javascript:hideDialog();"></a>
+		    </div>
+		    <div class="PwdDiv">
+				<label>原密码</label>
+				<input id="oldPwd" type="password" value=""/>
+			</div>
+			<div class="PwdDiv">
+				<label>新密码</label>
+				<input id="newPwd" type="password" value=""/>
+			</div>
+			<div class="PwdDiv">
+				<label>确认密码</label>
+				<input id="againPwd" type="password" value=""/>
+			</div>
+			<div class="btnDiv">
+				<a class="cancel_btn" href="javascript:hideDialog();">取消</a>
+				<a class="sure_btn" onclick="changePwdBtnClick();">确定</a>
+			</div>
+		</div>
+
+		<script type="text/javascript" src="../static/js/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="../static/js/aid/common.js"></script>
+		<script src="../static/layui/layui.js" charset="utf-8"></script>
+		<script type="text/javascript" src="../static/js/aid/config.js" ></script>
+		<script type="text/javascript" src="../static/js/aid/setup.js"></script>
+		<link rel="stylesheet" href="../static/css/aid/layer-aid.css"/>
+	</body>
+</html>

@@ -1,0 +1,59 @@
+ .content {
+	 overflow: hidden;
+}
+ .nav-area .pslider {
+	 margin-top: 0px;
+ }
+ .pslider-noactive {
+	 background: none;
+ }
+.thead{
+	margin-top: 31px;
+	margin-left: 5px;
+	line-height: 48px;
+}
+
+
+
+.w200{
+	width: 340px;
+}
+ .w130{
+	 width: 240px;
+	 float: left;
+ }
+
+ .auserform{    width: 92%;margin: 0 auto; margin-top: 20px}
+.auserform select{
+	 height: 36px;
+ }
+ .auserform li{
+	 display: block;
+	 float: left;
+	 height: 64px;
+	 margin-right: 20px;
+ }
+ .auserform li label {
+	 display: inline-block;
+	 float: left;
+	 text-align: right;
+	 line-height: 30px;
+ }
+ .topti{
+	 font-size: 18px;
+
+ }
+ .export{
+     clear: both;
+     display: block;
+ }
+ .export a{
+     width: 140px;
+     height: 36px;
+     display: inline-block;
+     line-height: 36px;
+     text-align: center;
+     cursor: pointer;
+     border-radius: 4px;
+     color: #fff;
+ }

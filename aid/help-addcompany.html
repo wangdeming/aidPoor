@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <title>精准扶贫应用系统-贫困人</title>
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="stylesheet" href="../static/layui/css/layui.css"/>
+    <link rel="stylesheet" href="../static/css/aid/common.css"/>
+    <link rel="stylesheet" href="../static/css/aid/help.css"/>
+    <link rel="stylesheet" href="../static/dist/noticejs.css" />
+    <style>
+        body{
+            background: #ffffff;
+        }
+        .formarea label{
+            width: 15%;
+        }
+        .formarea{width: 85%;}
+
+        .w130{
+            width: 20%;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+<form class="layui-form">
+    <input type="hidden" id="helpUnitId">
+    <input type="hidden" id="id">
+    <input type="hidden" id="sysUserId">
+    <input type="hidden" id="helpPlanId">
+
+    <ul class="formarea">
+        <li class="formtit">
+            基本资料
+        </li>
+        <li>
+            <label>单位编号：</label>
+            <div class="formv"><input type="text" lay-verify="required"  id="code"></div>
+        </li>
+        <li>
+            <label>单位名称：</label>
+            <div class="formv"><input  type="text" lay-verify="required" id="helpUnitName"></div>
+        </li>
+        <li>
+            <label>单位简称：</label>
+            <div class="formv"><input type="text" lay-verify="required"  id="abbreviation"></div>
+        </li>
+        <li>
+            <label>所在地：</label>
+            <div class="formv">
+                <div class="w130">
+                    <select name="province" lay-verify="required"  id="province" lay-filter="province">
+                        <option value="">请选择省</option>
+                    </select>
+                </div>
+                <div class="w130">
+                    <select name="city" lay-verify="required" id="city" lay-filter="city">
+                        <option value=""></option>
+                    </select>
+                </div>
+                <div class="w130">
+                    <select name="county"  id="county" lay-filter="county">
+                        <option value=""></option>
+                    </select>
+                </div>
+                <div class="w130">
+                    <select name="town"  id="town" lay-filter="town">
+                        <option value=""></option>
+                    </select>
+                </div>
+                <div class="w130">
+                    <select name="village" id="village" lay-filter="village">
+                        <option value=""></option>
+                    </select>
+                </div>
+            </div>
+        </li>
+        <li class="formtit">
+            单位管理员
+        </li>
+        <li>
+            <label>管理员姓名：</label>
+            <div class="formv"><input type="text" lay-verify="required" id="name"></div>
+        </li>
+        <li>
+            <label>账号：</label>
+            <div class="formv"><input type="text" lay-verify="required" id="loginName"></div>
+        </li>
+        <li>
+            <label>密码：</label>
+            <div class="formv"><input type="password"   id="password"  placeholder="默认密码123456"></div>
+            <!--<p class="titp">&nbsp;&nbsp;默认密码123456</p>-->
+        </li>
+        <li>
+            <label>性别：</label>
+            <div class="formv"><label><input type="radio"  name="sex"value="1" checked>男</label><label><input type="radio"  name="sex" value="2">女</label></div>
+        </li>
+        <li>
+            <label>政治面貌：</label>
+            <div class="formv"><select lay-verify="required" id="politics">
+            </select></div>
+        </li>
+        <li>
+            <label>联系电话：</label>
+            <div class="formv"><input  type="number" lay-verify="required" id="telephoneNumber"></div>
+        </li>
+        <li>
+            <label>电子邮箱：</label>
+            <div class="formv"><input  type="email" lay-verify="required" id="email"></div>
+        </li>
+        <li class="formtit">
+            帮扶结对（选填）
+        </li>
+        <li>
+            <label>贫困村：</label>
+            <div class="formv">
+                <select name="modules" id="villageId" lay-search="">
+
+                </select>
+            </div>
+        </li>
+        <li style="width: 100%;text-align: center;">
+            <button type="button"  class="layui-btn" style="background: #999999" onclick="closelay()">取消</button>
+            <button class="layui-btn" lay-submit lay-filter="addcompanysub">立即提交</button>
+        </li>
+
+</form>
+<script type="text/javascript" src="../static/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../static/js/aid/common.js"></script>
+<script type="text/javascript" src="../static/dist/notice.js" ></script>
+<script src="../static/layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript" src="../static/js/aid/config.js"></script>
+<link rel="stylesheet" href="../static/css/aid/layer-aid.css"/>
+<script>
+
+
+     function submit() {
+         var dataarr={};
+         $("input,select").each(function (k,o) {
+             var aname=$(o).attr('id');
+             if(aname && $(o).val()){
+                 dataarr[aname]=$(o).val();
+             }
+         })
+
+
+             dataarr['sex']=$("input[name='sex']:checked").val();
+         if(!$("#id").val()) {
+             dataarr['password'] = dataarr['password'] ? dataarr['password'] : '123456';
+         }
+         iajax(
+             wPath.getUrl('helpunit/edit'),
+             dataarr,
+             function(msg){
+                 layer.alert(msg.message);
+                 setTimeout(function () {
+                     closelay();
+                     window.parent.search();
+                 },1000)
+
+
+             }, false,'POST'
+         )
+    }
+
+
+    layui.use(['form'], function () {
+        var form = layui.form;
+        var urlid=getUrlParam('id');
+
+        if(urlid!='false'){
+            iajax(
+                wPath.getUrl('helpunit/toedit'),
+                {id:urlid},
+                function(msg){
+                    var obj=msg.object;
+                    $('#helpUnitId').val(obj.unit.id);
+                    $('#code').val(obj.unit.code);
+                    $('#helpUnitName').val(obj.unit.name);
+                    $('#abbreviation').val(obj.unit.abbreviation);area(0, 'province');
+                    $('#province').attr('data',obj.unit.province);area(obj.unit.province, 'city');
+                    $('#city').attr('data',obj.unit.city);area(obj.unit.city, 'county');
+                    $('#county').attr('data',obj.unit.county);area(obj.unit.county, 'town');
+                    $('#town').attr('data',obj.unit.town);area(obj.unit.town, 'village');
+                    $('#village').attr('data',obj.unit.village);
+                    $('#id').val(obj.person.id);
+                    $('#loginName').parent('.formv').html(obj.user.loginName);
+                    // $('#loginName').val(obj.user.loginName);
+                    $('#password').parent().parent().empty();
+                    $('#sysUserId').val(obj.person.sys_user_id);
+                    $('#name').val(obj.person.name);
+                    $("input:radio[name=sex][value='"+obj.person.sex+"']").attr("checked",true);
+                    $('#politics').attr('data',obj.person.politics);
+                    $('#telephoneNumber').val(obj.person.telephone_number);
+                    $('#email').val(obj.person.email);
+                    $('#helpPlanId').val(obj.plan.id);
+                    $('#villageId').val(obj.plan.villageId);
+                    form.render('radio');
+                }
+            )
+        }
+        setTimeout(function () {
+            getdm('POLITICS','politics',form);
+        },200)
+
+        iajax(
+            wPath.getUrl('helpunit/listvillage'),
+            {key:''},
+            function(msg){
+                var array = msg.object;
+                $("#villageId").html('<option value="">直接选择或搜索选择</option>');
+
+                for (var i = 0; i < array.length; i++) {
+                    var selected='';
+                    if(array[i].villageId==$("#villageId").val()){
+                        selected='selected="selected"';
+                    }
+                    html = '<option value="' + array[i].villageId + '" '+selected+'>' + array[i].village + '</option>';
+                    $("#villageId").append(html);
+                }
+                form.render('select');
+            },false,'POST'
+        )
+
+        function area(parentId, flag) {
+            iajax(
+                wPath.getUrl('areaRelation/queryAreaListByParentId'),
+                {parentId: parentId},
+                function(msg){
+                    var array = msg.object;
+
+                    $("#"+flag).empty();
+                    $("#"+flag).append('<option value=""></option>');
+                    for (var i = 0; i < array.length; i++) {
+                        var selected='';
+
+                        if(array[i].areaId==$("#"+flag).attr('data')){
+                            selected='selected="selected"';
+                        }
+                        html = '<option value="' + array[i].areaId + '" '+selected+'>' + array[i].areaName + '</option>';
+                        $("#"+flag).append(html);
+                    }
+                    form.render('select');
+                },false,'POST'
+            )
+        }
+
+
+        area(0, 'province');
+
+
+
+
+        form.on("select(province)", function (data) {
+            var province = $("#province").val();
+            if (province.length == 0) {
+                $("#city").empty();
+                $("#city").append('<option value=""></option>');
+                $("#county").empty();
+                $("#county").append('<option value=""></option>');
+                $("#town").empty();
+                $("#town").append('<option value=""></option>');
+                $("#village").empty();
+                $("#village").append('<option value=""></option>');
+                form.render('select');
+            } else {
+                area(province, 'city');
+            }
+        })
+
+        form.on("select(city)", function (data) {
+            var  parentId= $("#city").val();
+            if (parentId.length == 0) {
+                $("#county").empty();
+                $("#county").append('<option value=""></option>');
+                $("#town").empty();
+                $("#town").append('<option value=""></option>');
+                $("#village").empty();
+                $("#village").append('<option value=""></option>');
+                form.render('select');
+            } else {
+                area(parentId, 'county');
+            }
+        })
+
+        form.on("select(county)", function (data) {
+            var  parentId= $("#county").val();
+            if (parentId.length == 0) {
+                $("#town").empty();
+                $("#town").append('<option value=""></option>');
+                $("#village").empty();
+                $("#village").append('<option value=""></option>');
+                form.render('select');
+            } else {
+                area(parentId, 'town');
+            }
+        })
+
+        form.on("select(town)", function (data) {
+            var  parentId= $("#town").val();
+            if (parentId.length == 0) {
+                $("#village").empty();
+                $("#village").append('<option value=""></option>');
+                form.render('select');
+            } else {
+                area(parentId, 'village');
+            }
+        })
+
+        form.verify({
+            title: function (value) {
+                if (value.length < 5) {
+                    return '标题至少得5个字符啊';
+                }
+            }
+            , pass: [/(.+){6,12}$/, '密码必须6到12位']
+            , content: function (value) {
+                layedit.sync(editIndex);
+            }
+        });
+        //监听提交
+        form.on('submit(addcompanysub)', function (data) {
+            submit();
+            return false;
+        });
+    });
+</script>
+</body>
+</html>

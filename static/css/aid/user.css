@@ -1,0 +1,116 @@
+
+.thead{
+	line-height: 48px;
+}
+.rlbtn ul li{
+	float: left;
+	width: 160px;
+	height: 48px;
+	margin-right: 18px;
+	color: #fff;
+	text-align: center;
+    cursor: pointer;
+}
+
+.rrbtn{
+	float: right;
+	position: relative;
+}
+ .rlbtn{
+	 float: left;
+	 position: relative;
+ }
+.inputtext{
+	width: 500px;
+	height: 36px;
+}
+ .inputsub{
+     width: 120px;
+     height: 36px;
+     background-color: #70d8a2;
+     display: inline-block;
+     line-height: 36px;
+     text-align: center;
+     margin-left: -8px;
+     cursor: pointer;
+ }
+ .rlbtn select{
+	 padding: 0 0 0 43px;
+ }
+.tdata{width: 100%;display: inline-table; margin-top: 20px;font-size: 16px;border-collapse:collapse;    text-align: center;}
+.tdata  td{border: 1px solid #bfbfbf; }
+.tdata tr{height: 50px;line-height: 50px;}
+.tdata a{color: #808080}
+
+ .auserform{
+     width: 89%;
+     margin: 0 auto;
+     letter-spacing: 1px;
+     margin-top: 24px;
+ }
+ .auserform .tit{
+     width: 240px;
+     height: 36px;
+     margin-left: -40px;
+     color: #fff;
+     line-height: 36px;
+     text-align: center;
+     font-size: 16px;
+ }
+ .ainput{
+     width: 430px;
+     height: 36px;
+     border: 1px solid #bfbfbf;
+     padding-left: 10px;
+ }
+.auserform li{
+    height: 45px;
+}
+.auserform input{
+    border: 1px solid #bfbfbf;
+}
+.auserform li span{
+    color: red;
+    margin-left: 10px;
+}
+ .auserform li label {
+     width: 105px;
+ }
+ .btn{
+     width: 120px;
+     height: 36px;
+     border: none;
+     margin-right: 30px;
+     color: #fff;
+     cursor: pointer;
+ }
+ .res{
+     background: none;
+ }
+ .usera:before, .user1:before{
+     content: '\3000';
+ }
+ .user1, .usera{
+     width: 16px;
+     height: 16px;
+     background: url(../../img/aid/userl.png);
+     margin-left: 30px;
+     margin-right: 5px;
+ }
+.user-active{
+    border-left: 4px solid #70d8a2;
+}
+ .user-active a{
+     color: #70d8a2;
+ }
+.muser-inactive{
+    background-position: 0 32px;
+}
+
+ .layui-form-item .layui-input-inline {
+     width: 216px;
+ }
+ .tl{
+     text-align: left;
+     padding-left: 20px;
+ }

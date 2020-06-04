@@ -1,0 +1,57 @@
+<form class="layui-form" action="#">
+<div class="afuser">
+    <ul class="auserform">
+        <li class="layui-form-item"><label class="layui-form-label">登录账号：</label><input class="ainput" type="text" name="loginName" lay-verify="required"><span>*</span></li>
+        <li class="layui-form-item"><label class="layui-form-label">用户姓名：</label><input class="ainput" type="text" name="realName" lay-verify="required"><span>*</span></li>
+        <li class="layui-form-item"><label class="layui-form-label">设置密码：</label><input class="ainput" type="password" name="password" lay-verify="pass" id="pass" ><span>*</span></li>
+        <li class="layui-form-item"><label class="layui-form-label">确定密码：</label><input class="ainput" type="password" name="passwordconfirm" lay-verify="repass"><span>*</span></li>
+        <li class="layui-form-item"><label class="layui-form-label">用户角色：</label><input class="ainput" type="checkbox" name="roleIds[]" lay-skin="primary" value="1"  checked title="管理员"> <input name="roleIds[]" value="2"  lay-skin="primary" type="checkbox" title="普通"></li>
+        <li class="layui-form-item"><label class="layui-form-label"></label><button lay-submit lay-filter="ta"  class="bg-green btn" >提交</button><button type="reset" id="reset" class="layui-btn btn" style="background: none;border: 1px solid #666666;color: #666666">重置</button></li>
+    </ul>
+</div>
+</form>
+<script>
+    layui.use(['form'], function(){
+        var form = layui.form ;
+        form.render('checkbox');
+        form.verify({
+            pass: [
+                /^[\S]{6,12}$/
+                ,'密码必须6到12位，且不能出现空格'
+            ]
+            ,repass: function(value) {
+                var pass = $("#pass").val();
+                if(!new RegExp(pass).test(value)) {
+                    return '两次输入的密码不一致';
+                }
+            }
+        });
+
+        form.on('submit(ta)', function(data){
+            var fields=data.field;
+            var r1 ='';var r2='';
+            $.each(fields,function (i,o) {
+                if(i=='roleIds[0]'){
+                    r1=o;
+                }
+                if(i=='roleIds[1]'){
+                    r2=o;
+                }
+            });
+            fields.roleIds=r1+','+r2;
+            iajax(
+                wPath.getUrl('user/addUserInfo'),
+                fields,
+                function(obj){
+                    if(obj.result=='SUCCESS'){
+                        layer.alert('添加成功', {icon: 1});
+                        setTimeout('window.location.href="user.html?flag=user-muser"',2000);
+                    }
+                },
+                false,
+                'POST'
+            );
+            return false;
+        });
+    });
+</script>

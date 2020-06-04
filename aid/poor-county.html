@@ -1,0 +1,103 @@
+
+<div class="ptable barea"  >
+    <div class="content-top">
+        <ul class="ctop">
+            countyCount: 12
+            overPovertyFamilyCount: 20550
+            overPovertyFamilyMemberCount: 65678
+            povertyCountyCount: 4
+            povertyFamilyCount: 141827
+            povertyFamilyMemberCount: 456811
+            prePovertyFamilyCount: 10550
+            prePovertyFamilyMemberCount: 33842
+            <li class="bg-purple wd20">
+                <span class="ctop-title">贫困县数/全部县数</span>
+                <span class="pnum"><span id="povertyCountyCount"></span>&nbsp;个/<span id="countyCount"></span>&nbsp;个</span>
+            </li>
+            <li class="bg-lpurple wd20">
+                <span class="ctop-title">贫困总户数</span>
+                <span class="pnum"><span id="povertyFamilyCount"></span>户/<span id="povertyFamilyMemberCount"></span>人</span>
+            </li>
+            <li class="bg-lorange wd20">
+                <span class="ctop-title">脱贫户数</span>
+                <span class="pnum"><span id="overPovertyFamilyCount"></span>户/<span id="overPovertyFamilyMemberCount"></span>人</span>
+            </li>
+            <li class="bg-lbule wd20">
+                <span class="ctop-title">预脱贫户数</span>
+                <span class="pnum"><span id="prePovertyFamilyCount"></span>户/<span id="prePovertyFamilyMemberCount"></span>人</span>
+            </li>
+        </ul>
+    </div>
+    <div class="boxarea">
+    <div class="thead">
+        <div class="rlbtn">
+            <ul class="layui-nav">
+                <li class="bg-green" id="download">下载导入模版</li>
+                <li class="bg-green layui-nav-item">导入数据
+                    <dl class="layui-nav-child"> <!-- 二级菜单 -->
+                        <dd><a href="#">导入-贫困县生产总值信息</a></dd>
+                        <dd><a href="#">导入-贫困县土地资源信息</a></dd>
+                        <dd><a href="#">导入-贫困县生活条件及各级资金投入信息</a></dd>
+                    </dl>
+                </li>
+
+                <li class="bg-orange" id="export"  lay-filter="export">导出数据</li>
+            </ul>
+        </div>
+        <div class="rrbtn">
+
+                <input type="text"  id="keywords">
+
+            <span class="icon-search" id="searsub" onclick="search()"></span>
+
+        </div>
+    </div>
+        <div style="display: none" id="nondiv">
+            <img src="../static/img/aid/non.svg" class="nonsvg" style="margin-top: 330px"><p style="text-align: center">暂无数据</p>
+        </div>
+    <form class="layui-form" action="#" id="listform">
+    <table class="tdata "  cellspacing="0" cellpadding="0">
+        <thead>
+        <tr>
+            <td style="width: 70px"><input type="checkbox" lay-skin="primary" id="chk_all"  lay-filter="chk_all"></td>
+            <td>序号</td>
+            <td>区域编号</td>
+            <td>区域名称</td>
+            <td>是否为贫困县</td>
+            <td>行政村数</td>
+            <td>贫困村数</td>
+            <td>自然村数</td>
+            <td>主要致贫原因</td>
+            <td>区域负责人</td>
+            <td>联系电话</td>
+            <td>操作</td>
+        </tr>
+        </thead>
+        <tbody id="tbody">
+        </tbody>
+    </table>
+    </form>
+    <form class="layui-form" action="#" id="downform">
+    <div id="layerdiv" style="display: none">
+        <table class="poptable">
+            <tr>
+                <td><input type="checkbox" lay-filter="down_all" id="down_all" lay-skin="primary" title="全部"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="fileName1" value="贫困县土地资源信息模板.xlsx" lay-skin="primary" class="downl" title="贫困县土地资源信息模板.xlsx" ></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="fileName2" value="贫困县生活条件及各级资金投入信息模板.xlsx" lay-skin="primary" class="downl" title="贫困县生活条件及各级资金投入信息模板.xlsx" ></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="fileName3" value="贫困县生产总值信息模板.xlsx" lay-skin="primary" class="downl" title="贫困县生产总值信息模板.xlsx"></td>
+            </tr>
+            <tr  style="line-height: 70px">
+                <td><button lay-submit="" type="button" lay-filter="down" class="bg-green btn">下载</button><button type="button" id="cancel" class="layui-btn btn" style="background: none;border: 1px solid #666666;color: #666666">取消</button></td>
+            </tr>
+        </table>
+    </div>
+    </form>
+    </div>
+</div>
+<script type="text/javascript" src="../static/js/aid/poor-county.js"></script>

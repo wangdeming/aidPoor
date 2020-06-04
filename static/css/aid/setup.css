@@ -1,0 +1,435 @@
+@font-face {
+	font-family:"PingFangSCRegular";
+	src: url('font/苹方黑体-准-简.ttf');
+}
+@font-face {
+	font-family:"PingFangSC-Semibold";
+	src: url('font/苹方黑体-中粗-简.ttf');
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+dl dt,dl dd,ul li {
+	list-style: none;
+}
+a{color: #4E5558;text-decoration: none}
+
+body {
+	font-family: PingFangSCRegular;
+	background-color: #f4f1f5;
+	font-size: 14px;
+}
+/*header{*/
+	/*height: 80px;*/
+	/*background: #FFFFFF;*/
+	/*box-shadow: 0 1px 8px 0 rgba(0,0,0,0.10);*/
+	/*font-size: 16px;*/
+	/*color: #4E5558;*/
+	/*letter-spacing: 0.16px;*/
+	/*font-family: PingFangSC-Semibold;*/
+	/*min-width: 1920px;*/
+/*}*/
+/*header .logo,header .topnav,header nav li{float: left;display: block;}*/
+/*.logo{*/
+	/*width: 300px;*/
+	/*height: 80px;*/
+	/*margin-left: 50px;*/
+	/*margin-right: 120px;*/
+/*}*/
+/*.logo img{*/
+	/*display: inline-block;*/
+	/*width: 100%;*/
+	/*height: 100%;*/
+/*}*/
+/*.topnav li{*/
+	/*width: auto;*/
+	/*height: 80px;*/
+	/*line-height: 80px;*/
+	/*color: #4E5558;*/
+	/*letter-spacing: 0.16px;*/
+	/*margin-right: 60px;*/
+	/*box-sizing: border-box;*/
+/*}*/
+/*.active_li{*/
+	/*border-bottom: 4px solid #2FA8FF;*/
+/*}*/
+/*.active_li>a{*/
+	/*color: #2FA8FF !important;*/
+/*}*/
+.setupDiv{
+	width: auto;
+	float: right;
+	margin-right: 20px;
+	height: 80px;
+	position: relative;
+	margin-left: 60px;
+}
+.setupDiv>span{
+	float: left;
+	font-size: 14px;
+	display: inline-block;
+	line-height: 80px;
+	margin-right: 5px;
+}
+.userDiv{
+	float: left;
+	cursor: pointer;
+}
+.userDiv>span{
+	float: left;
+	font-size: 14px;
+	display: inline-block;
+	line-height: 80px;
+	color: #2FA8FF;
+	margin-right: 10px;
+}
+.userDiv>img{
+	float: left;
+	display: inline-block;
+	width: 32px;
+	height: 32px;
+	margin-top: 24px;
+}
+.hidden{
+	display: none !important;
+}
+.showDiv{
+	width: 100%;
+	height: 50px;
+	background-color: white;
+	position: absolute;
+	bottom: -30px;
+	left: 0;
+}
+.showDiv>a{
+	display: inline-block;
+	width: 100%;
+	height: 25px;
+	line-height: 25px;
+	font-size: 14px;
+	text-align: center;
+	cursor: pointer;
+}
+.mainContainer{
+	width: 100%;
+	min-width: 1920px;
+	height: 980px;
+	margin-top: 20px;
+	font-family: PingFangSC-Semibold;
+}
+.container_leftNav{
+	float: left;
+	width: 60px;
+	height: 100%;
+	margin-right: 20px;
+}
+.container_right_one,.container_right_two{
+	float: left;
+	width: calc(100% - 100px);
+	height: 100%;
+	margin-right: 20px;
+	background: #ffffff;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+	border-radius: 8px;
+}
+.leftNav{
+	width: 52px;
+	height: 200px;
+	background: #FFFFFF;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.10);
+	border-radius: 8px;
+	margin-bottom: 10px;
+	cursor: pointer;
+}
+.navActive{
+	width: 60px !important;
+}
+.navActive>span{
+	color: #1E1E1E !important;
+	margin-left: 20px !important;
+}
+.leftNav>span{
+	display: inline-block;
+	width: 20px;
+	height: auto;
+	font-size: 16px;
+	color: #B6B6B6;
+	letter-spacing: 0.16px;
+	text-align: center;
+	line-height: 25px;
+	margin-top: 56px;
+	margin-left: 16px;
+}
+.leftDiv{
+	width: 120px;
+	height: 100%;
+	margin-left: 50px;
+	margin-right: 80px;
+	float: left;
+	text-align: center;
+}
+.leftDiv>img{
+	display: inline-block;
+	width: 120px;
+	height: 120px;
+	margin-top: 50px;
+	margin-bottom: 15px;
+}
+.leftDiv>span{
+	display: inline-block;
+	width: 120px;
+	height: 20px;
+	line-height: 20px;
+	font-size: 14px;
+}
+.user_name{
+	font-family: PingFangSC-Semibold;
+	color: #1E1E1E;
+	margin-bottom: 10px;
+}
+.user_role{
+	font-family: PingFangSCRegular;
+	color: #4E5558;
+	margin-bottom: 15px;
+}
+.leftDiv>a{
+	display: inline-block;
+	width: 120px;
+	height: 20px;
+	line-height: 20px;
+	font-family: PingFangSCRegular;
+	font-size: 14px;
+	color: #2FA8FF;
+	cursor: pointer;
+}
+.rightDiv{
+	width: 640px;
+	height: 100%;
+	float: left;
+}
+.rightDivHeader{
+	width: 100%;
+	height: 22px;
+	line-height: 22px;
+	font-family: PingFangSC-Semibold;
+	font-size: 16px;
+	color: #4E5558;
+	margin-top: 50px;
+	float: left;
+}
+.rightDiv>label{
+	display: inline-block;
+	width: 280px;
+	height: 20px;
+	line-height: 20px;
+	ont-family: PingFangSC-Medium;
+	font-size: 14px;
+	color: #B6B6B6;
+	margin-top: 25px;
+	margin-right: 40px;
+	float: left;
+}
+.rightDiv>input{
+	display: inline-block;
+	width: 280px;
+	height: 34px;
+	background: #F3F7FA;
+	border-radius: 4px;
+	font-family: PingFangSC-Medium;
+	font-size: 14px;
+	color: #4E5558;
+	text-indent: 15px;
+	border: none;
+	outline: none;
+	margin-top: 10px;
+	margin-right: 40px;
+	float: left;
+}
+.rightDiv>select{
+	display: inline-block;
+	width: 280px;
+	height: 34px;
+	background: #F3F7FA;
+	border-radius: 4px;
+	font-family: PingFangSC-Medium;
+	font-size: 14px;
+	color: #4E5558;
+	text-indent: 15px;
+	border: none;
+	outline: none;
+	margin-top: 10px;
+	margin-right: 40px;
+	float: left;
+}
+.editBtn{
+	display: inline-block;
+	width: 120px;
+	height: 42px;
+	line-height: 42px;
+	background-image: linear-gradient(45deg, #0094FF 0%, #56B8FF 100%);
+	box-shadow: 0 2px 8px 0 rgba(47,168,255,0.50);
+	margin-top: 30px;
+	float: left;
+	font-family: PingFangSC-Regular;
+	font-size: 14px;
+	color: #FFFFFF;
+	text-align: center;
+	border-radius: 4px;
+	cursor: pointer;
+}
+.ui-mask{ 
+	width: 100%;
+	height:100%;
+	display: none;
+	background: #000;
+	position: absolute;
+	top: 0px;
+	height: 0px;
+	z-index: 800;
+	opacity:0.4; 
+	filter: Alpha(opacity=40);
+}
+.ui-dialog{ 
+	width: 720px;
+	height: 468px;
+	display: none;
+	position: absolute;
+	z-index: 900;
+	top: 0px;
+	left: 0px;
+	border-radius: 4px;
+	background-color: rgba(252,252,252,1.0);	
+}
+.ui-dialog-title{
+	width: 100%;
+	height: 88px;
+	position: relative;
+	border-bottom: 1px #B6B6B6 solid;
+}
+.ui-dialog-closebutton{
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	top: 30px;
+	right: 30px;
+	background-image: url(../../img/aid/close.svg);
+	background-size: cover;
+}
+.titleName{
+	display: inline-block;
+	width: 100px;
+	height: 28px;
+	line-height: 28px;
+	margin-top: 30px;
+	margin-left: 30px;
+	font-family: PingFangSC-Semibold;
+	font-size: 20px;
+	color: #4E5558;
+}
+.PwdDiv{
+	width: 100%;
+	height: 44px;
+	margin-top: 45px;
+}
+.PwdDiv>label{
+	display: inline-block;
+	width: 180px;
+	height: 44px;
+	line-height: 44px;
+	text-align: right;
+	margin-right: 20px;
+	float: left;
+}
+.PwdDiv>input{
+	display: inline-block;
+	width: 400px;
+	height: 42px;
+	background: #FFFFFF;
+	border: 1px solid #CCCCCC;
+	border-radius: 4px;
+	outline: none;
+	font-family: PingFangSC-Medium;
+	font-size: 18px;
+	color: #4E5558;
+	text-indent: 15px;
+}
+.btnDiv{
+	width: 100%;
+	height: 42px;
+	margin-top: 40px;
+}
+.cancel_btn{
+	display: inline-block;
+	width: 120px;
+	height: 42px;
+	line-height: 42px;
+	text-align: center;
+	background: #B6B6B6;
+	box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
+	border-radius: 4px;
+	font-family: PingFangSC-Regular;
+	font-size: 14px;
+	color: #FFFFFF;
+	margin-left: 200px;
+	cursor: pointer;
+}
+.sure_btn{
+	display: inline-block;
+	width: 120px;
+	height: 42px;
+	line-height: 42px;
+	text-align: center;
+	background: #2FA8FF;
+	box-shadow: 0 2px 8px 0 rgba(47,168,255,0.50);
+	border-radius: 4px;
+	font-family: PingFangSC-Regular;
+	font-size: 14px;
+	color: #FFFFFF;
+	margin-left: 10px;
+	cursor: pointer;
+}
+.cancel_edit_btn{
+	display: inline-block;
+	width: 120px;
+	height: 42px;
+	line-height: 42px;
+	background: #B6B6B6;
+	box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
+	border-radius: 4px;
+	margin-top: 30px;
+	float: left;
+	font-family: PingFangSC-Regular;
+	font-size: 14px;
+	color: #FFFFFF;
+	text-align: center;
+	cursor: pointer;
+	margin-right: 10px;
+}
+.sure_edit_btn{
+	display: inline-block;
+	width: 120px;
+	height: 42px;
+	line-height: 42px;
+	background: #2FA8FF;
+	box-shadow: 0 2px 8px 0 rgba(47,168,255,0.50);
+	margin-top: 30px;
+	float: left;
+	font-family: PingFangSC-Regular;
+	font-size: 14px;
+	color: #FFFFFF;
+	text-align: center;
+	border-radius: 4px;
+	cursor: pointer;
+}
+.noDisabled{
+	background: #FFFFFF !important;
+	border: 1px solid #CCCCCC !important;
+	box-sizing: border-box !important;
+}
+
+/*顶部导航栏*/
+.topnav a:hover{
+	color: #2FA8FF;
+}

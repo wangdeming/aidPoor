@@ -1,0 +1,159 @@
+
+.rrbtn {
+    float: right;
+    position: relative;
+}
+
+.thead select {
+
+    height: 42px;
+    background: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px;
+    padding:0 20px;
+}
+
+.rlbtn {
+    float: left;
+    position: relative;
+}
+
+.rlbtnsp {
+    width: 100px;
+    text-align: right;
+    display: inline-block;
+}
+
+.w50 {
+    width: 65%;
+}
+
+.mt24 {
+    margin-top: 24px
+}
+
+.inputtext {
+    border: 1px solid #CCCCCC;
+    border-radius: 4px;
+    width: 400px;
+    padding-left: 25px;
+    height: 42px;
+}
+
+.inputsub {
+    width: 120px;
+    height: 36px;
+    background-color: #70d8a2;
+    display: inline-block;
+    line-height: 36px;
+    text-align: center;
+    margin-left: -8px;
+}
+
+.btn {
+    display: block;
+    float: left;
+    font-size: 14px;
+    width: 160px;
+    height: 42px;
+    color: #FFFFFF;
+    border: none;
+    text-align: center;
+    line-height: 36px;
+    background-image: linear-gradient(45deg, #0094FF 0%, #56B8FF 100%);
+    box-shadow: 0 2px 8px 0 rgba(47, 168, 255, 0.50);
+    border-radius: 4px;
+}
+
+.w200 {
+    width: 230px;
+}
+
+.w130 {
+    width: 130px;
+    float: left;
+}
+
+.w600 {
+    width: 600px
+}
+
+.w400 {
+    width: 390px;
+}
+
+.w475 {
+    width: 475px;
+}
+
+.auserform {
+    width: 1000px;
+    margin: 0 auto;
+    margin-top: 20px
+}
+
+input,select,textarea {
+    background: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px;
+    height: 42px;
+}
+
+.auserform li {
+    display: block;
+    float: left;
+    height: 64px;
+    margin-right: 20px;
+}
+
+.auserform li span {
+    color: red;
+    margin-left: 4px;
+}
+
+.auserform li label {
+    display: inline-block;
+    float: left;
+    text-align: right;
+    line-height: 30px;
+}
+
+.formarea{
+    width: 70%;
+    margin: 0 auto;
+}
+.formarea li{
+    line-height: 45px;
+    padding-top: 10px;
+    clear: both;
+}
+.formv{
+    display: inline-block;
+    width: 75%;
+    float: left;
+}
+.formarea label{
+    float: left;
+    color: #B6B6B6;
+    text-align: right;
+    display: inline-block;
+    width: 18%;
+}
+.formv input{
+    width: 100%;
+    text-indent: 10px;
+}
+.formtit{
+    font-family: PingFangSC-Semibold;
+    font-size: 16px;
+    line-height: 60px;
+}
+.cancle_btn{
+    background: #666666;
+}
+.add{
+    display: none;
+}
+.titp{
+    font-size: 12px;
+}

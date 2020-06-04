@@ -1,0 +1,25 @@
+<ul class="nav-type">
+    <li class="tab  active" data-page="user" data="user-muser"><span>帮扶措施</span></li>
+</ul>
+<div class="nav-area barea">
+    <ul class="pslider">
+    </ul>
+</div>
+<script>
+        initleft($(".tab"),$(".pslider"));
+        var _flag=getUrlParam('flag');
+        iajax(
+            wPath.getUrl('helpPlan/projectCategory'),
+            '',
+            function(obj){
+
+                $.each(obj.object,function (i,o) {
+                    var pclass='pslider-noactive';
+                    if((getUrlParam("projectCategory")=='' && i==0) || getUrlParam("projectCategory")==o.dm){
+                        pclass='pslider-active'
+                    }
+                    $(".pslider").append('<li class="'+pclass+'"><a href="measures.html?projectCategory='+o.dm+'">'+o.dmValue+'</a></li>');
+                });
+            }
+        )
+</script>

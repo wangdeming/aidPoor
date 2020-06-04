@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+<title>精准扶贫应用系统</title>
+<link rel="shortcut icon" type="image/x-icon" href="favicon_aid.ico" />
+    <link rel="stylesheet" href="../static/css/aid/common.css"/>
+    <link rel="stylesheet" href="../static/css/aid/map.css"/>
+</head>
+<body>
+<script>
+    const userobj=JSON.parse(localStorage.getItem('userobj'));
+</script>
+<header></header>
+
+<div class=" main">
+    <div class="left"  data="left"></div>
+
+    <div class="right">
+    <div class="r1 barea">
+        <div class="lheader bg-blue">
+            GIS定位
+        </div>
+        <div class="gis">
+            <div class="gisrow">
+                <label>区县：</label>
+                <select id="county"><option value="0">全部</option></select>
+            </div>
+            <div class="gisrow">
+                <label>乡镇：</label>
+                <select  id="town"><option value="0">全部</option></select>
+            </div>
+            <div class="gisrow">
+                <label>&nbsp;&nbsp;村：</label>
+                <select  id="village"><option value="0">全部</option></select>
+            </div>
+        </div>
+    </div>
+    <div class="r2 barea">
+        <input placeholder="请输入贫困人姓名" id="name" name="name">
+    </div>
+    <div class="r3 barea">
+        <div class="lheader bg-orange">
+            贫困人基本信息
+        </div>
+        <ul class="personinfo">
+            <li><span class="tjust">姓名</span><span>：</span><span id="realName"></span></li>
+            <li><span class="tjust">性别</span><span>：</span><span id="sex"></span></li>
+            <li><span class="tjust">户主姓名</span><span>：</span><span id="masterName"></span></li>
+            <li><span class="tjust">家庭人口</span><span>：</span><span id="familyMemberSum"></span></li>
+            <li><span class="tjust">劳动力数</span><span>：</span><span id="laborSum"></span></li>
+            <li><span class="tjust">家庭收入</span><span>：</span><span id="income"></span></li>
+            <li><span class="tjust">享受低保数</span><span>：</span><span id="lowInsSum"></span></li>
+            <li><span class="tjust">所在区域</span><span>：</span><span id="countytown"></span></li>
+        </ul>
+    </div>
+    <div class="r4 barea">
+        <div class="lheader bg-green">
+            致贫原因
+        </div>
+        <div class="chart1" id="chart1"></div>
+    </div>
+</div>
+    <div class="content barea" id="allmap">
+    </div>
+</div>
+<footer> </footer>
+<script type="text/javascript" src="../static/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="//echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+<script type="text/javascript" src="//api.map.baidu.com/api?v=2.0&ak=bfapdW1qOdicbyRtyQkAMXGs05Lcy3Ak"></script>
+<script type="text/javascript" src="../static/js/aid/worldcloud.js"></script>
+<script type="text/javascript" src="../static/js/aid/common.js"></script>
+<script type="text/javascript" src="../static/js/aid/map.js"></script>
+<script type="text/javascript" src="../static/js/aid/config.js"></script>
+<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+
+
+</script>
+</body>
+</html>

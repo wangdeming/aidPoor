@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset=utf-8 />
+	<meta name="renderer" content="webkit" >
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<script type="text/javascript" src="../static/js/jquery-3.2.1.min.js" ></script>
+</head>
+<body>
+<img src="/kaptcha.jpg" width="100px" height="50px"/>
+<input id="test" type="text" />
+<button type="button" onclick="test();">11�</button>
+
+<script>
+
+$(function(){
+	$.ajaxSetup({
+        contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+        headers: { 'x-requested-with': 'XMLHttpRequest' },
+        xhrFields: {
+        	withCredentials: true
+        },
+        crossDomain: true,  
+        complete: function (XMLHttpRequest, textStatus) {
+            if (XMLHttpRequest.getResponseHeader("userStatus") == "logintimeout") {
+                parent.window.location.replace(XMLHttpRequest.getResponseHeader("redirectUrl"));
+            }
+        }
+    });
+});
+
+function test(){
+ $.ajax({
+	url: 'http://223.84.134.45:18081/aidPoor/areaRelation/queryAreaListByParentId',
+	type: 'post',
+    dataType: "json",
+	data: {'parentId' : '361100000000'},
+	success: function(data){
+
+	}
+ });
+}
+</script>
+</body>
+</html>

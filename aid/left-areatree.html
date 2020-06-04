@@ -1,0 +1,240 @@
+<ul class="nav-type">
+    <li class="tab  active" data-page="map" data="map"><span>贫困人查询</span></li>
+    <li class="tab normal"  data-page="poor" data="poor-people"><span>贫困户</span></li>
+    <li class="tab normal" data-page="poor"  data="poor-village"><span>贫困村</span></li>
+    <li class="tab normal rhide"  data-page="poor" data="poor-county" id="poor_county"><span>贫困县</span></li>
+</ul>
+<div class="nav-area barea">
+    <div class="leftheader">
+        地区
+    </div>
+    <input type="hidden" id="tempAreaId"/>
+    <ul class="pslider">
+        <li class="province">
+            <span><i class="triangle-down"></i>江西省</span>
+            <ul>
+                <li class="city pslider-active"><span>上饶市</span></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<script>
+
+    $(function () {
+		if(userobj.roleList[0].id=='1'){
+		    $("#poor_county").removeClass('rhide');
+		}
+        loadAreaTree();
+        initleft($(".tab"),$(".pslider"));
+    })
+
+    var mark = $('.left').attr('data-mark');
+    var nodelink = $('.left').attr('data-nodelink');
+    var flagName = getUrlParam('flag');
+    var areaId = getUrlParam('areaId');
+
+    //加载树
+    function loadAreaTree() {
+        $.ajax({
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            type: "post",
+            async: false,
+            url: wPath.getUrl('queryAreaTree'),
+            data:{mark: mark},
+            dataType:'JSON',
+            success: function(data) {
+                $(".pslider").empty();
+                if(data.result == "SUCCESS"){
+                    var dataList = data.object;
+                    bindNode(dataList);
+
+                    $('i[name=triangle]').click(function(){
+                        if($(this).attr('class') == 'triangle-right'){
+                            if($(this).attr('data-id') != ''){
+                                $('i[data-id='+$(this).attr('data-id')+']').parent().parent().children('ul').hide();
+                                $('i[data-id='+$(this).attr('data-id')+']').removeClass('triangle-down');
+                                $('i[data-id='+$(this).attr('data-id')+']').addClass('triangle-right');
+                            }
+                            $(this).parent().parent().children('ul').show();
+                            $(this).removeClass('triangle-right');
+                            $(this).addClass('triangle-down');
+
+                            if($(this).parent().parent().children('ul').html().trim()=='' && $(this).parent().parent().hasClass('town')){
+                                getChildListByParentId($(this).parent().parent().children('ul').attr('id'));
+                            }
+                        }else{
+                            $(this).parent().parent().children('ul').hide();
+                            $(this).removeClass('triangle-down');
+                            $(this).addClass('triangle-right');
+                        }
+                    });
+
+                    expandNode();
+                }else{
+                    new NoticeJs({
+                        text: data.message,
+                        position: 'middleCenter',
+                        animation: {
+                            open: 'animated bounceIn',
+                            close: 'animated bounceOut'
+                        }
+                    }).show();
+                }
+            },
+            //调用执行后调用的函数
+            complete: function (XMLHttpRequest, textStatus) {
+
+            },
+            //调用出错执行的函数
+            error: function (e) {
+                //请求出错处理
+            }
+        });
+    }
+
+    function bindNode(list){
+        if(list.length == 0){
+            return ;
+        }
+        for(var i=0; i<list.length; i++){
+            if(list[i].areaId.indexOf('00000000') > -1){
+                $('.pslider').append('<li class="city">' +
+                    '            <span><i name="triangle" class="triangle-down"></i>'+list[i].areaName+'</span>' +
+                    '            <ul id="'+list[i].areaId+'">' +
+                    '            </ul>' +
+                    '        </li>');
+                list.splice(i, 1);
+                break;
+            }
+            var areaType = '';
+            var display = '';
+            var linkHtml = '<span><i name="triangle" class="triangle-right"></i>' + list[i].areaName + '</span>';
+
+            if($('#'+list[i].parentId).length > 0){
+
+                //县
+                if((list[i].areaId.indexOf('000000') > -1) && (list[i].areaId.indexOf('00000000') < 0)){
+                    areaType = 'county';
+                    if(mark == 'town' || mark == 'village') {
+                        display = 'style="display: none;"';
+                        linkHtml = '<span><i name="triangle" data-id="i-county" class="triangle-right"></i>' + list[i].areaName + '</span>';
+                    }
+                }
+                //镇
+                if((list[i].areaId.indexOf('000') > -1) && (list[i].areaId.indexOf('000000') < 0)){
+                    areaType = 'town';
+                    if(mark == 'town') {
+                        linkHtml = '<a href="' + nodelink + '?areaId=' + list[i].areaId + '&flag=' + flagName + '">' + list[i].areaName + '</a>';
+                    }
+                    if(mark == 'village'){
+                        display = 'style="display: none;"';
+                        linkHtml = '<span><i name="triangle" data-id="i-town" class="triangle-right"></i>' + list[i].areaName + '</span>';
+                    }
+                }
+
+                //村
+                if(list[i].areaId.indexOf('000') < 0){
+                    areaType = 'village';
+                    linkHtml = '<a href="' + nodelink + '?areaId=' + list[i].areaId + '&flag=' + flagName + '">' + list[i].areaName + '</a>';
+                }
+
+                $('#'+list[i].parentId).append('<li class="pslider-noactive ' + areaType + '">' +
+                    linkHtml +
+                    '            <ul id="' + list[i].areaId + '"' + display + '>' +
+                    '            </ul>' +
+                    '        </li>');
+                list.splice(i, 1);
+                i -= 1;
+            }
+        }
+        bindNode(list);
+    }
+
+    //展开节点
+    function expandNode(){
+        if(areaId != null && areaId != ''){
+            if(mark == 'village'){
+                var townId = areaId.substring(0, 9) + '000';
+                getChildListByParentId(townId);
+                var countyId = areaId.substring(0, 6) + '000000';
+                $('#' + countyId).parent().children('span').children('i').removeClass('triangle-right');
+                $('#' + countyId).parent().children('span').children('i').addClass('triangle-down');
+                $('#' + countyId).show();
+            }
+
+            $('#' + areaId).parent().removeClass('pslider-noactive');
+            $('#' + areaId).parent().addClass('pslider-active');
+            $('#' + areaId).parent().parent().parent().children('span').children('i').removeClass('triangle-right');
+            $('#' + areaId).parent().parent().parent().children('span').children('i').addClass('triangle-down');
+            $('#' + areaId).parent().parent().show();
+            return ;
+        }
+
+        var remark = mark;
+        if(mark == 'village'){
+            remark = 'town';
+            getChildListByParentId($('li.' + remark + ':first').children('ul').attr('id'));
+        }
+        if(mark == 'town'){
+            $('li.'+remark+':first').removeClass('pslider-noactive');
+            $('li.'+remark+':first').addClass('pslider-active');
+        }
+
+        $('li.'+remark+':first').parent().parent().children('span').children('i').removeClass('triangle-right');
+        $('li.'+remark+':first').parent().parent().children('span').children('i').addClass('triangle-down');
+        $('li.'+remark+':first').parent().show();
+        var tempAreaId = $('li.' + remark + ':first').children('ul').attr('id');
+
+        if(mark == 'village'){
+            $('li.'+remark+':first').children('span').children('i').removeClass('triangle-right');
+            $('li.'+remark+':first').children('span').children('i').addClass('triangle-down');
+            $('li.'+remark+':first').find('li:first').removeClass('pslider-noactive');
+            $('li.'+remark+':first').find('li:first').addClass('pslider-active');
+            $('li.'+remark+':first').children('ul').show();
+            tempAreaId = $('li.'+remark+':first').find('li:first').children('ul').attr('id');
+        }
+
+        $('#tempAreaId').val(tempAreaId);
+        $('#reloadData').click();
+    }
+
+    function getChildListByParentId(parentId){
+        $.ajax({
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            type: "post",
+            async: false,
+            url: wPath.getUrl('areaRelation/queryAreaListByParentId'),
+            data:{parentId: parentId},
+            dataType:'JSON',
+            success: function(data) {
+                $('#' + parentId).empty();
+                if(data.result == "SUCCESS"){
+
+                    var dataList = data.object;
+                    for(var i=0; i<dataList.length; i++){
+                        $('#' + parentId).append('<li class="pslider-noactive village">' +
+                            '       <a href="' + nodelink + '?areaId=' + dataList[i].areaId + '&flag=' + flagName + '">' + dataList[i].areaName + '</a>' +
+                            '       <ul id="' + dataList[i].areaId + '" style="display: none;">' +
+                            '       </ul>' +
+                            '   </li>');
+                    }
+                }else{
+                    new NoticeJs({
+                        text: data.message,
+                        position: 'middleCenter',
+                        animation: {
+                            open: 'animated bounceIn',
+                            close: 'animated bounceOut'
+                        }
+                    }).show();
+                }
+            }
+        });
+    }
+</script>

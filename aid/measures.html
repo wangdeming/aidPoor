@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <title>精准扶贫应用系统-帮扶措施</title>
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <link rel="stylesheet" href="../static/layui/css/layui.css"/>
+    <link rel="stylesheet" href="../static/css/aid/common.css"/>
+    <link rel="stylesheet" href="../static/css/aid/measures.css"/>
+</head>
+<body>
+<header></header>
+<div class="main">
+    <div class="left" data="left-measures"></div>
+    <div class="content">
+        <div class="ptable barea">
+            <div class="boxarea">
+            <form class="layui-form" action="">
+                <div class="topti">计划资金总额：<span id="help-plan-totalFunds" class="oranfont"></span>万元</div>
+                <ul class="auserform">
+                    <li class="w200">
+                        <label>&nbsp;&nbsp;省：</label>
+                        <div class="w130">
+                            <select name="province" id="select_province" lay-filter="province">
+                                <option value="">请选择省</option>
+                            </select>
+                        </div>
+                    </li>
+                    <li class="w200">
+                        <label>市：</label>
+                        <div class="w130">
+                            <select name="city" id="select_city" lay-filter="city">
+                                <option value=""></option>
+                            </select>
+                        </div>
+                    </li>
+                    <li class="w200">
+                        <label>区县：</label>
+                        <div class="w130">
+                            <select name="county" id="select_county" lay-filter="county">
+                                <option value=""></option>
+                                <option value="0">北京</option>
+                                <option value="1">上海</option>
+                            </select>
+                        </div>
+                    </li>
+                    <li class="w200">
+                        <label>乡镇：</label>
+                        <div class="w130">
+                            <select name="town" id="select_town" lay-filter="town">
+                                <option value=""></option>
+                            </select>
+                        </div>
+                    </li>
+                    <li class="w600">
+                        <label>村：</label>
+                        <div class="w130">
+                            <select name="village" id="select_village" lay-filter="village">
+                                <option value=""></option>
+                            </select>
+                        </div>
+                    </li>
+                </ul>
+                <div class="export">
+                        <input type="file" id="file" style="display: none">
+                        <a class="bg-orange" id="import" >导入数据</a>
+                    <a class="bg-orange" id="export">导出数据</a>
+                </div>
+                <table class="help-plan tdata" border="1" cellspacing="0" cellpadding="0">
+                    <thead>
+                    <tr>
+                        <th style="width: 50px"><input type="checkbox"  lay-skin="primary"  lay-filter="chk_all"  id="chk_all"/></th>
+                        <th style="width: 50px">序号</th>
+                        <th>帮扶人姓名</th>
+                        <th>项目名称</th>
+                        <th>类别</th>
+                        <th width="250px">项目内容</th>
+                        <th>项目规模</th>
+                        <th>计划资金总额（元）</th>
+                        <th>计划ID</th>
+                        <th>创建时间</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </form>
+            <div id="page" class="page"></div>
+            </div>
+        </div>
+    </div>
+    <footer></footer>
+</body>
+
+<script type="text/javascript" src="../static/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../static/js/aid/common.js"></script>
+<script src="../static/layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript" src="../static/js/aid/config.js"></script>
+<script type="text/javascript" src="../static/js/aid/measures.js"></script>
+<link rel="stylesheet" href="../static/css/aid/layer-aid.css"/>
+
+
+</html>

@@ -1,0 +1,52 @@
+<div class="ptable barea">
+    <div class="boxarea">
+    <div class="thead">
+        <div class="rrbtn">
+
+                帮扶状态：
+                <select id="status1" onchange="search()">
+                    <option value="">全部</option>
+                    <option value="0">进行中</option>
+                    <option value="1">结束</option>
+                </select>
+                <input type="text" id="familyName" class="inputtext" results="s" placeholder="请输入帮扶责任人姓名或帮扶对象姓名进行查询" />
+                <span class="icon-search" onclick="search()"></span>
+
+        </div>
+        <button class="btn add" onclick="editpage(false)">新增帮扶结对</button>
+        <div style="clear: both;padding-top: 30px">
+            <select id="helpUnitId"  onchange="search()" >
+
+            </select>
+        </div>
+    </div>
+    <div style="display: none" id="nondiv">
+        <img src="../static/img/aid/non.svg" class="nonsvg"><p style="text-align: center">暂无数据</p>
+    </div>
+    <table class="tdata"  cellspacing="0" cellpadding="0">
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>帮扶责任人姓名</th>
+            <th>联系电话</th>
+            <th>电子邮箱</th>
+            <th>帮扶对象</th>
+            <th>帮扶状态</th>
+            <th style="cursor: pointer" onclick="search(this)">开始帮扶时间&nbsp;<i name="triangle" triangle-down="2"  triangle-up="1" class="triangle-down"></i></th>
+            <th style="cursor: pointer" onclick="search(this)">结束帮扶时间&nbsp;<i name="triangle" triangle-down="4" triangle-up="3"  class="triangle-down"></i></th>
+            <th style="cursor: pointer" onclick="search(this)">创建时间&nbsp;<i name="triangle" triangle-down="6"  triangle-up="5" class="triangle-down"></i></th>
+            <th  style="width: 150px">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <div id="page" class="page"></div>
+    </div>
+
+
+
+</div>
+<script type="text/javascript" src="../static/js/aid/help-combine.js"></script>
+

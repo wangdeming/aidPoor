@@ -1,0 +1,200 @@
+
+ .breadcrumbs{
+	 margin-top: 22px;
+ }
+ .ctop{color: #fff;margin-top: 16px;}
+ .content-top{
+	 clear: both;
+	 float: left;
+	 margin-left: 30px;
+	 margin-bottom: 20px;
+ }
+.ctop li{
+
+	height: 150px;
+	border-radius: 15px;
+	float: left;
+	margin-right: 43px;
+}
+.wd20{
+	width: 20%;
+}
+ .wd15{
+	 width: 15.5%;
+ }
+.ctop-title{
+	margin-top: 52px;
+	display: inline-block;
+	font-size: 16px;
+	margin-left: 34px;
+	width: 100%;
+}
+.pnum{
+	display: inline-block;
+	float: right;
+	margin-right: 19px;
+	font-size: 30px;
+	margin-top: 11px;
+}
+.thead{
+	margin-top: 31px;
+	line-height: 48px;
+}
+.rlbtn ul li{
+	float: left;
+	width: 160px;
+	height: 48px;
+	margin-right: 18px;
+	color: #fff;
+	text-align: center;
+	cursor: pointer;
+}
+
+.rrbtn{
+	float: right;
+	position: relative;
+}
+ .rlbtn{
+	 float: left;
+	 position: relative;
+ }
+.thead input{
+	width: 400px;
+}
+.rrbtn select{
+	padding: 0 20px;
+}
+
+
+
+.searchicon{
+	display: block;
+	width: 20px;
+	height: 20px;
+	background: url("../../img/aid/icons.png")  no-repeat scroll 0px -36px transparent;
+	position: absolute;
+	left: 555px;
+	top: 16px;
+	cursor: pointer;
+}
+
+
+ .thead-people{margin-top: 36px}
+ .fields li{float: left;width: 410px; height: 64px;    display: table-cell; text-align: right;}
+ .thead-people select{
+	 width: 240px;
+	 height: 36px;
+	 appearance:none;
+	 -moz-appearance:none;
+	 -webkit-appearance:none;
+	 padding: 0 0 0 102px;
+	 background: url("../../img/aid/icons.png")  no-repeat scroll 214px 0px transparent;
+ }
+.checkboxdiv{
+	width: 80%;
+	line-height: 40px;
+}
+ .checkboxdiv input {
+	 margin-right: 39px;
+	 opacity: 0;
+	 height: 20px;
+ }
+.peoplesearch{
+	position: relative;
+}
+.peoplesearch input{
+	width: 80%;
+	height: 36px;
+}
+.peoplesearch .searchicon{
+	left: 94%;
+	top: 9px;
+}
+.btns li{
+	width: 140px;
+	height: 36px;
+	float: left;
+	margin-left: 26px;
+	color: #fff;
+	line-height: 36px;
+	text-align: center;
+	cursor: pointer;
+}
+.btns{
+	margin-bottom: -60px;
+}
+
+ .checkboxdiv label:before {
+	 display: inline-block;
+	 content: '';
+	 width: 15px;
+	 height: 15px;
+	 margin-right: 15px;
+	 vertical-align: middle;
+	 border: 1px solid #ddd;
+	 transition: all 0.3s ease;
+	 -webkit-transition: all 0.3s ease;
+	 -moz-transition: all 0.3s ease;
+ }
+
+ .checkboxdiv label:after {
+	 display: inline-block;
+	 content: '';
+	 width: 4px;
+	 height: 8px;
+	 border: 0;
+	 margin-left:  -40px;
+	 vertical-align: middle;
+	 margin-bottom: 5px;
+	 border-right: 1px solid #fff;
+	 border-bottom: 1px solid #fff;
+	 background: #fff;
+	 transform: rotate(45deg);
+	 -webkit-transform: rotate(45deg);
+	 -moz-transform: rotate(45deg);
+	 -ms-transform: rotate(45deg);
+	 transition: all 0.3s ease;
+	 -webkit-transition: all 0.3s ease;
+	 -moz-transition: all 0.3s ease;
+ }
+
+ .checkboxdiv input[type='checkbox']:checked + label:before {
+	 background: #70d8a1;
+	 border-color: #70d8a1;
+ }
+ .checkboxdiv input[type='checkbox']:checked + label:after {
+	 background: #70d8a1;
+ }
+ .poptable{
+	 width: 82%;
+	 margin: 0 auto;
+	 line-height: 40px;
+	 margin-top: 20px;
+ }
+ .btn {
+	 width: 120px;
+	 height: 36px;
+	 border: none;
+	 margin-right: 30px;
+	 color: #fff;
+	 cursor: pointer;
+ }
+ @media screen and (max-width: 1762px) {
+	 .pnum {
+		 font-size: 22px;
+	 }
+ }
+
+ .layui-nav .layui-nav-item {
+	 line-height: 48px;
+ }
+ .layui-nav-child{
+	 top: 48px;
+ }
+ .layui-nav .layui-nav-child a {
+	 text-align: left;
+ }
+ .layui-nav {
+	  padding: 0;
+
+ }

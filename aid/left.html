@@ -1,0 +1,29 @@
+<ul class="nav-type">
+    <li class="tab  active" data-page="map" data="map"><span>贫困人查询</span></li>
+    <li class="tab normal"  data-page="poor" data="poor-people"><span>贫困户</span></li>
+    <li class="tab normal" data-page="poor"  data="poor-village"><span>贫困村</span></li>
+
+    <li class="tab normal rhide"  data-page="poor" data="poor-county" id="poor_county"><span>贫困县</span></li>
+</ul>
+<div class="nav-area barea">
+    <div class="leftheader">
+        地区
+    </div>
+    <ul class="pslider">
+        <li class="province">
+            <span><i class="triangle-down"></i>江西省</span>
+            <ul>
+                <li class="city pslider-active"><span>上饶市</span></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<script>
+
+    $(function () {
+        if(userobj.roleList[0].id=='1'){
+            $("#poor_county").removeClass('rhide');
+        }
+        initleft($(".tab"),$(".pslider"));
+    })
+</script>

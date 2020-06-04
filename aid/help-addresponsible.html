@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <title>精准扶贫应用系统-贫困人</title>
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="stylesheet" href="../static/layui/css/layui.css"/>
+    <link rel="stylesheet" href="../static/css/aid/common.css"/>
+    <link rel="stylesheet" href="../static/css/aid/help.css"/>
+    <link rel="stylesheet" href="../static/dist/noticejs.css" />
+    <style>
+        .formv label{
+            width: 93px;
+            text-align: left;
+        }
+
+
+    </style>
+</head>
+<body style="background: #ffffff">
+<form class="layui-form" action="">
+        <input type="hidden" id="id">
+        <input type="hidden" id="sysUserId">
+        <input type="hidden" id="helpUnitId">
+        <ul class="formarea">
+            <li class="formtit">
+                基本资料
+            </li>
+            <li>
+                <label>所属单位：</label>
+                <div class="formv" id="helpUnitName">
+
+                </div>
+            </li>
+            <li>
+                <label>姓名：</label>
+                <div class="formv"><input type="text" id="name" lay-verify="required"></div>
+            </li>
+            <li>
+                <label>账号：</label>
+                <div class="formv"><input type="text" id="loginName" lay-verify="required"></div>
+            </li>
+            <li>
+                <label>密码：</label>
+                <div class="formv"><input type="password" id="password" placeholder="默认密码123456"></div>
+            </li>
+            <li>
+                <label>性别：</label>
+                <div class="formv"><label><input type="radio"  name="sex"value="1" checked>男</label><label><input type="radio"  name="sex" value="2">女</label></div>
+            </li>
+            <li>
+                <label>角色：</label>
+                <div class="formv"><label><input type="radio"  name="manager"value="0" checked>普通</label><label><input type="radio"  name="manager" value="1">管理员</label></div>
+            </li>
+            <li>
+                <label>政治面貌：</label>
+                <div class="formv"><select lay-verify="required" id="politics"></select></div>
+            </li>
+            <li>
+                <label>联系电话：</label>
+                <div class="formv"><input type="text" lay-verify="required" id="telephoneNumber"></div>
+            </li>
+            <li>
+                <label>电子邮箱：</label>
+                <div class="formv"><input type="text"  lay-verify="required" id="email"></div>
+            </li>
+
+            <li style="text-align: center;line-height: 70px">
+                <button id="cancel" type="button" class="layui-btn" style="background: #999999" onclick="closelay()">取消</button>
+                <button class="layui-btn" lay-submit lay-filter="addcompanysub">确定</button>
+            </li>
+        </ul>
+
+</form>
+<script type="text/javascript" src="../static/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../static/js/aid/common.js"></script>
+<script type="text/javascript" src="../static/dist/notice.js" ></script>
+<script src="../static/layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript" src="../static/js/aid/config.js"></script>
+<link rel="stylesheet" href="../static/css/aid/layer-aid.css"/>
+<script>
+
+    $("#helpUnitName").text(parent.getunitname());
+    $("#helpUnitId").val(getUrlParam('helpUnitId'));
+    function submit() {
+        var dataarr={};
+        $("input,select").each(function (k,o) {
+            var aname=$(o).attr('id');
+            if(aname && $(o).val()){
+                dataarr[aname]=$(o).val();
+            }
+        })
+        dataarr['sex']=$("input[name='sex']:checked").val();
+        dataarr['password']=dataarr['password']?dataarr['password']:'123456';
+        dataarr['manager']=$("input[name='manager']:checked").val();
+        iajax(
+            wPath.getUrl('helpperson/edit'),
+            dataarr,
+            function(msg){
+                layer.alert(msg.message);
+                window.parent.search();
+                closelay();
+            }, false,'POST'
+        )
+    }
+
+
+
+    layui.use(['form'], function () {
+
+        var form = layui.form;
+
+
+        var urlid=getUrlParam('id');
+
+        if(urlid!='false'){
+            $("#password").parents('li').hide();
+            iajax(
+                wPath.getUrl('helpperson/toedit'),
+                {id:urlid},
+                function(msg){
+                    var obj=msg.object;
+                    $('#id').val(obj.helpPerson.id);
+                    $('#loginName').parent('.formv').html(obj.user.loginName);
+                    // $('#password').val(obj.helpPerson.telephoneNumber);
+                    $('#sysUserId').val(obj.user.id);
+                    // $('#helpUnitId').val(obj.helpPerson.helpUnitId);
+                    $("input:radio[name=manager][value='"+(obj.helpPerson.manager+0)+"']").attr("checked",true);
+                    $('#name').val(obj.helpPerson.name);
+                    $("input:radio[name=sex][value='"+obj.helpPerson.sex+"']").attr("checked",true);
+                    $('#politics').attr('data',obj.helpPerson.politics);
+                    $('#telephoneNumber').val(obj.helpPerson.telephoneNumber);
+                    $('#email').val(obj.helpPerson.email);
+
+                    form.render('radio');
+                }
+            )
+        }
+        setTimeout(function () {
+            getdm('POLITICS','politics',form);
+        },200)
+
+
+        //监听提交
+        form.on('submit(addcompanysub)', function (data) {
+            submit();
+            return false;
+        });
+    });
+</script>
+</body>
+</html>

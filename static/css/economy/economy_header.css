@@ -1,0 +1,114 @@
+@font-face {
+	font-family:"经典圆体简";
+	src: url('../../font/JDYTJ.TTF');
+}
+body{
+	font-family: "经典圆体简";
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	
+	min-width: 1200px;
+}
+header{
+	height: 88px;
+	width: 100%;
+}
+.container{
+	width: 1200px;
+	margin: 0 auto;
+	position: relative;
+}
+h1{
+	height: 88px;
+	line-height: 88px;
+	font-size: 30px;
+	color: #00fee9;
+	text-align: center;
+	margin: 0 auto;
+}
+.container>div.header_left{
+	width: 310px;
+	height: 88px;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.container>div.header_left>span{
+	height: 88px;
+	line-height: 88px;
+	font-size: 24px;
+	color: #00fee9;
+	margin-left: 10px;
+}
+.container>div.header_right{
+	width: 200px;
+	height: 88px;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+.container>div.header_right>a{
+	display: inline-block;
+}
+.a_message{
+	width: 29px;
+	height: 27px;
+	background-image: url(../../img/economy_home/message.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+	margin: 28px 15px 33px 15px;
+}
+.a_info{
+	width: 31px;
+	height: 31px;
+	background-image: url(../../img/economy_home/personal.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+	margin: 28px 15px 33px 15px;
+}
+.a_back{
+	width: 31px;
+	height: 31px;
+	background-image: url(../../img/economy_home/back.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+	margin: 28px 15px 33px 15px;
+}
+.title_line{
+	width: 1200px;
+	height: 2px;
+	background-image: url(../../img/economy_home/line.png);
+	background-repeat: repeat-x;
+	background-size: 100% 100%;
+	margin: 0 auto;
+}
+nav{
+	padding-top: 20px;
+}
+a.header_nav{
+	display: inline-block;
+	width: 192px;
+	height: 42px;
+	background-image: url(../../img/economy_home/nav_bg_noselect.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+	text-align: center;
+	line-height: 42px;
+	color: #00fee9;
+	font-size: 24px;
+	cursor: pointer;
+	margin: 0 auto;
+}
+.margin_right_9{
+	margin-right: 9px;
+}
+.margin_right_10{
+	margin-right: 10px;
+}
+.nav_active{
+	background-image: url(../../img/economy_home/nav_bg_select.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-color: rgba(159, 255, 247, 0.2);
+}

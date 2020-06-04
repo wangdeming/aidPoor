@@ -1,0 +1,40 @@
+<div class="ptable barea">
+    <div class="boxarea">
+        <div class="thead">
+            <div class="rrbtn">
+                    <input type="text" id="key" class="inputtext" results="s" placeholder="请输入单位编号、单位名称或单位简称进行查询" />
+                    <span class="icon-search" onclick="search()"></span>
+            </div>
+            <button class="btn add" onclick="editpage(false)" >新增帮扶单位</button>
+
+        </div>
+        <div style="display: none" id="nondiv">
+            <img src="../static/img/aid/non.svg" class="nonsvg"><p style="text-align: center">暂无数据</p>
+        </div>
+        <table class="tdata "   cellspacing="0" cellpadding="0">
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>单位编号</th>
+                <th>单位名称</th>
+                <th>单位简称</th>
+                <th>所在地</th>
+                <th>单位人数</th>
+                <th>管理员姓名</th>
+                <th>联系电话</th>
+                <th>电子邮箱</th>
+                <th>结对贫困村</th>
+                <th>创建时间</th>
+                <th  style="width: 150px">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+
+
+            </tbody>
+        </table>
+        <div id="page" class="page"></div>
+    </div>
+</div>
+<script type="text/javascript" src="../static/js/aid/help-company.js"></script>
+

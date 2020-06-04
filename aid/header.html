@@ -1,0 +1,71 @@
+<div class="logo"><img src="../static/img/aid/logo.png" width="100%"/></div>
+<nav class="topnav">
+    <ul>
+        <li><a href="map.html">扶贫对象</a></li>
+        <li><a href="help.html?flag=help-combine">帮扶结对管理</a></li>
+        <li><a href="measures.html?projectCategory=1">帮扶任务</a></li>
+        <li><a href="fpdxfx.html">数据中心</a></li>
+        <li><a href="setup.html">基础设置</a></li>
+    </ul>
+</nav>
+
+    <div class="user">
+        <img src="../static/img/user.svg" width="40px" height="40px">
+        <div class="select-bg">
+            <select class="select-green" id="toprightlogout">
+                <option value="" id="loginname">管理员</option>
+                <option value="logout">退出</option>
+            </select>
+        </div>
+    </div>
+
+
+<script>
+
+$("#toprightlogout").change(function () {
+    if($(this).val()=='logout'){
+        $.get(wPath.getUrl('userLogout'), function(obj){
+            window.location='login.html';
+        });
+    }
+});
+
+function getpname() {
+    var r = window.location.pathname.split('/');
+    if (r != null) return r.pop(); return null; //返回参数值
+}
+
+
+$(function(){
+    var usero=JSON.parse(localStorage.getItem('userobj'));
+    $("#loginname").text(usero.loginName);
+
+
+
+    var liobj=$(".topnav li").first();
+    switch( getpname())
+    {
+
+        case 'help.html':
+            liobj=$(".topnav li:nth-child(2)");
+            break;
+        case 'measures.html':
+            liobj=$(".topnav li:nth-child(3)");
+            break;
+        case 'fpdxfx.html':
+            liobj=$(".topnav li:nth-child(4)");
+            break;
+        case 'setup.html':
+            liobj=$(".topnav li:nth-child(5)");
+            break;
+        default:
+            liobj.addClass('navactive');
+    }
+    $(".topnav li").removeClass('navactive');
+    liobj.addClass('navactive');
+
+
+
+})
+
+</script>

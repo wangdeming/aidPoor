@@ -1,0 +1,121 @@
+.wd1638{
+	min-width: 1638px
+}
+.h906{
+	height: 906px;
+}
+.content {
+	 height: 975px;
+	 width: 1360px;
+	 float: left;
+	 overflow: hidden;
+	 font-size: 16px;
+}
+ .content-top{
+	 display: block;
+	 height: 84px;
+	 width: 100%;
+ }
+ .content-top select{
+	 display: block;
+	 letter-spacing: 1px;
+	 color: #808080;
+	 line-height: 36px;
+	 width: 160px;
+	 height: 36px;
+	 margin-top: 24px;
+	 margin-left: 24px;
+	 display: inline-block;
+	 border: 1px solid #bfbfbf;
+	 padding-left: 55px;
+	 text-align: center;
+	 background: url(../../img/aid/icons.png) no-repeat scroll 135px 0px transparent;
+	 appearance:none;
+	 -moz-appearance:none;
+	 -webkit-appearance:none;
+ }
+.c1{
+	width: 442px;
+	height: 360px;
+	float: left;
+
+	border-radius: 10px 10px 0px 0px;
+}
+ .lbheader{
+	 display: block;
+	 width: 100%;
+	 height: 60px;
+	 color: #fff;
+	 text-align: center;
+	 line-height: 60px;
+	 border-radius: 10px 10px 0px 0px;
+ }
+.lbheader span{
+	display: block;
+	width:50%;
+	cursor: pointer;
+	float: left;
+}
+ .c2{
+	 width: 672px;
+	 height: 420px;
+	 float: left;
+	 margin-top: 21px;
+	 border-radius: 10px 10px 0px 0px;
+ }
+ .mt16{
+	 margin-left: 16px;
+ }
+ .chart1{
+	 width: 400px;
+	 height: 320px;
+	 display: block;
+	 margin: 0 auto;
+ }
+.chart2{
+	width:660px;
+	height: 380px;
+	display: block;
+	margin: 0 auto;
+}
+.sl{
+	border-radius: 10px 0px 0px 0px;
+}
+.sr{
+	border-radius: 0px 10px 0px 0px;
+}
+.spactive{
+	background: #70d8a1;
+	color: #fff;
+}
+.spnormal{
+	background: #fff;
+	color:#70d8a1 ;
+}
+#tit{
+	border-bottom: 1px solid #70d8a1 ;
+}
+.f3 li{
+	float: left;
+	display: block;
+	width: 220px;
+	height: 380px;
+}
+.f3title{
+	text-align: center;
+	margin-top: 60px;
+	font-size: 16px;
+	letter-spacing: 1px;
+	color: #808080;
+}
+.tit-orange{
+	font-size: 24px;
+	text-align: center;
+	margin-top: 30px;
+	letter-spacing: 2px;
+	color: #ff8761;
+}
+#chart5,#chart6{
+	width: 210px;
+	height: 180px;
+}

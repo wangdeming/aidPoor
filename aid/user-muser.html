@@ -1,0 +1,36 @@
+<div class="ptable barea">
+    <div class="boxarea">
+    <div class="thead">
+        <div class="rlbtn">
+            <ul>
+                <li class="bg-green" id="fadd">快速新增</li>
+                <li class="bg-orange" id="deleteall">批量删除</li>
+            </ul>
+        </div>
+        <div class="rrbtn">
+                <input type="search"  class="inputtext" id="keywords">
+                <a class="inputsub" id="search">查询</a>
+        </div>
+    </div>
+    <form class="layui-form" action="#">
+    <table class="tdata"  cellspacing="0" cellpadding="0">
+        <thead>
+        <tr>
+            <td style="width: 100px"><input type="checkbox"  lay-skin="primary" id="chk_all" lay-filter="chk_all" ></td>
+            <td>登录账号</td>
+            <td style="width: 120px;">姓名</td>
+            <td>角色</td>
+            <td>上次登录时间</td>
+            <td>创建时间</td>
+            <td>操作</td>
+        </tr>
+        </thead>
+        <tbody id="tbody">
+
+        </tbody>
+    </table>
+    </form>
+    <div id="page" class="page"></div>
+    </div>
+</div>
+<script type="text/javascript" src="../static/js/aid/muser.js"></script>

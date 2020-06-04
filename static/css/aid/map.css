@@ -1,0 +1,97 @@
+.content{
+	min-height: 975px;
+}
+.nav-area{
+	min-height: 975px;
+}
+.right {
+	float: right;
+	width: 350px;
+	height: 975px;
+	padding-left: 16px;
+}
+.r1{
+	width: 340px;
+	height: 200px;
+}
+.gis{
+	width: 260px;
+	margin: 0 auto;
+	margin-top: 18px;
+	line-height: 48px;
+}
+.gis select{
+	width: 208px;
+	height: 32px;
+
+
+}
+.r2{
+	width: 340px;
+	height: 72px;
+	margin-top: 16px;
+	position: relative;
+}
+.r2 input{
+	margin: 0 auto;
+	width: 310px;
+	height: 32px;
+	margin-top: 18px;
+	margin-left: 15px;
+	border: 1px solid #cccccc;
+	padding-left: 15px;
+}
+
+.r3{
+	margin-top: 16px;
+	width: 340px;
+	height: 354px;
+}
+.personinfo{
+	display: table;
+	margin-left: 50px;
+	margin-top: 25px;
+}
+.personinfo li{display: table-row;  width: 80% ;height:20px;    line-height: 18px;
+	margin:5px;}
+.personinfo li span{display: table-cell;  }
+.tjust{
+	width:75px;
+	height:100%;
+	display:inline-block;
+	text-align: justify;
+	vertical-align:top;
+}
+.tjust:after{
+	content:"";
+	display: inline-block;
+	width:100%;
+	overflow:hidden;
+	height:0;
+}
+.r4{
+	margin-top: 16px;
+	width: 340px;
+	height: 300px;
+}
+.r4 .chart1{
+	width: 100%;
+	height: 90%;
+	margin: 0 auto;
+	/*margin-top: 25px;*/
+}
+footer{
+	height: 50px;
+	width: 100%;
+}
+
+.ui-autocomplete{
+	background: #fff;
+	border: 1px solid gainsboro;
+	padding-left: 20px;
+	line-height: 25px;
+}
+ .ui-autocomplete li{
+	 border-bottom: 1px solid gainsboro;
+	 cursor: pointer;
+ }

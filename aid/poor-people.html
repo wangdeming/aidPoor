@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+		<meta charset="utf-8" />
+		<title>精准扶贫应用系统-贫困户</title>
+		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+	    <link rel="stylesheet" href="../static/css/aid/common.css"/>
+	    <link rel="stylesheet" href="../static/css/aid/poor-people.css"/>
+	    <link rel="stylesheet" href="../static/dist/noticejs.css" />
+	    <link rel="stylesheet" href="../static/dist/select-theme-chosen.css" /> 
+		<script>
+			const userobj=JSON.parse(localStorage.getItem('userobj'));
+		</script>
+	</head>
+	<body>
+		<header></header>
+		<div class="main">
+			<div class="left leftNav" data="left-areatree" data-mark="village" data-nodelink="poor-people.html"></div>
+			<input type="button" id="reloadData" onclick="reloadData();" style="display: none;"/>
+
+		    <div class="content">
+			    	<!--<div class="breadcrumbs">-->
+				    <!--当前位置：<span id="location"></span>-->
+				<!--</div>-->
+				<div class="content-top">
+				    <ul class="ctop">
+				        <li class="item-purple">
+					        	<span class="ctop-title">全部户数</span>
+					        	<p class="ctop-num" id="allFamily">
+					        		<span class="pnum" id="allFamily1">0</span>户
+					        		<span class="pnum">/</span>
+					        		<span class="pnum" id="allFamily2">0</span>人
+					        	</p>
+				        </li>
+				        <li class="item-lpurple">
+					        	<span class="ctop-title">已脱贫数</span>
+					        	<p class="ctop-num" id="outPovertyFamily">
+					        		<span class="pnum" id="outPovertyFamily1">0</span>户
+					        		<span class="pnum">/</span>
+					        		<span class="pnum" id="outPovertyFamily2">0</span>人
+					        	</p>
+				        </li>
+				        <li class="item-lorange">
+					        	<span class="ctop-title">贫困数</span>
+					        	<p class="ctop-num" id="povertyFamily">
+					        		<span class="pnum" id="povertyFamily1">0</span>户
+					        		<span class="pnum">/</span>
+					        		<span class="pnum" id="povertyFamily2">0</span>人
+					        	</p>
+				        </li>
+				        <li class="item-lbule">
+					        	<span class="ctop-title">预脱贫数</span>
+					        	<p class="ctop-num" id="prePovertyFamily">
+					        		<span class="pnum" id="prePovertyFamily1">0</span>户
+					        		<span class="pnum">/</span>
+					        		<span class="pnum" id="prePovertyFamily2">0</span>人
+					        	</p>
+				        </li>
+				        <li class="item-lyellow">
+					        	<span class="ctop-title">返贫数</span>
+					        	<p class="ctop-num" id="antiPoverty">
+					        		<span class="pnum" id="antiPoverty1">0</span>户
+					        		<span class="pnum">/</span>
+					        		<span class="pnum" id="antiPoverty2">0</span>人
+					        	</p>
+				        </li>
+				    </ul>
+				</div>
+				<div class="ptable">
+				    <div class="thead-people">
+				        <ul class="fields">
+		                    <li class="li-up">
+		                        <span class="selectName">贫困户属性:</span>
+		                        <select class="drop-select" id="poor-people-attr">
+		                            <option>全部</option>
+		                        </select>
+		                    </li>
+		                    <li class="li-up">
+		                        <span class="selectName">主要致贫原因:</span>
+		                        <select class="drop-select" id="main-reason">
+		                            <option>全部</option>
+		                        </select>
+		                    </li>
+		                    <li class="li-up" id="isOrNotReturePoor">
+		                        <span class="selectName">是否返贫:</span>
+		                        <button class="btn_2" data-dm="1"></button>
+		                        <label>是</label>
+		                        <button class="btn_2" data-dm="2"></button>
+		                        <label>否</label>
+		                    </li>
+		                    <li class="li-down">
+		                        <span class="selectName">识别标准：</span>
+		                        <select class="drop-select" id="standards">
+		                            <option>全部</option>
+		                        </select>
+		                    </li>
+		                    <li class="li-down">
+		                        <span class="selectName">贫困状态:</span>
+		                        <select class="drop-select" id="flag">
+		                            <option>全部</option>
+		                        </select>
+		                    </li>
+		                    <li class="li-down position-relative">
+		                        <input class="search-input" type="text" id="key"/>
+		                        <a onclick="searchBtnClick();" class="search-icon"></a>
+		                    </li>
+		                </ul>    			            			            
+				    </div>
+				    <div class="clear"></div>
+				    <ul class="btns">
+		                <li class="btn-orange" id="newPeople">+新建贫困户</li>
+		                <!-- <li class="btn-green">批量导入</li> -->
+		            </ul>
+				    <table class="tdata"  cellspacing="0" cellpadding="0">
+				        <thead>
+				        <tr>
+				            <th width="50px">序号</th>
+				            <th width="94px">户主姓名</th>
+				            <th width="98px">家庭成员数</td>
+				            <th width="108px">贫困户属性</th>
+				            <th width="86px">识别标准</th>
+				            <th width="170px">贫困户所在地</td>
+				            <th width="55px">状态</th>
+							<th width="120">帮扶单位简称</th>
+				            <th width="100px">帮扶责任人</th>
+							<th width="100">备注</th>
+				            <th width="254px">操作</td>
+				        </tr>
+				        </thead>
+				        <tbody>
+				       
+				        </tbody>
+				    </table>
+				    <div class="page-div">
+						<p>
+							总计<span id="poorPeopleNum"></span>条数据
+						</p>
+						<div class="page" id="page_area">
+							
+						</div>
+				    </div>
+				</div>
+			</div>
+		</div>
+		<footer> </footer>
+		<!--弹窗登录-->
+		<div class="ui-mask" id="mask"></div>
+		<div class="ui-dialog" id="dialogMove" onselectstart='return false;'>
+			<div class="ui-dialog-title" id="dialogDrag">
+		        <span id="dialog-title">新建-贫困户信息采集</span>
+		        <a class="ui-dialog-closebutton" href="javascript:hideDialog();"></a>
+		    </div>
+		    <div class="poor_people_info_one">
+		    		<div class="title-div green-bg">一、基本信息</div>
+		    		<div class="address_one five-star">
+		    			<span class="markname">家庭住址:</span>		    			
+		    			<div id="address-province" class="tinyselect" style="width: 120px;">
+		    				<div class="selectbox">
+		    					<a id="select-province" class="select-text">请选择省</a>
+		    					<a class="after-arrow arrow-down"></a>
+		    				</div>
+		    				<div class="dropdown closeSelect">
+		    					<ul class="itemcontainer" id="ul-province">
+		    						
+		    					</ul>
+		    				</div>
+		    			</div>
+		    			<div id="address-city" class="tinyselect" style="width: 120px;">
+		    				<div class="selectbox">
+		    					<a id="select-city" class="select-text">请选择市</a>
+		    					<a class="after-arrow arrow-down"></a>
+		    				</div>
+		    				<div class="dropdown closeSelect">
+		    					<ul class="itemcontainer" id="ul-city">
+		    						
+		    					</ul>
+		    				</div>
+		    			</div>
+		    			<div id="address-county" class="tinyselect" style="width: 120px;">
+		    				<div class="selectbox">
+		    					<a id="select-county" class="select-text">请选择县</a>
+		    					<a class="after-arrow arrow-down"></a>
+		    				</div>
+		    				<div class="dropdown closeSelect">
+		    					<ul class="itemcontainer" id="ul-county">
+		    						
+		    					</ul>
+		    				</div>
+		    			</div>
+		    			<div id="address-town" class="tinyselect" style="width: 200px;">
+		    				<div class="selectbox">
+		    					<a id="select-town" class="select-text">请选择镇</a>
+		    					<a class="after-arrow arrow-down"></a>
+		    				</div>
+		    				<div class="dropdown closeSelect">
+		    					<ul class="itemcontainer" id="ul-town">
+		    						
+		    					</ul>
+		    				</div>
+		    			</div>
+		    			<div id="address-village" class="tinyselect" style="width: 200px;">
+		    				<div class="selectbox">
+		    					<a id="select-village" class="select-text">请选择村</a>
+		    					<a class="after-arrow arrow-down"></a>
+		    				</div>
+		    				<div class="dropdown closeSelect">
+		    					<ul class="itemcontainer" id="ul-village">
+		    						
+		    					</ul>
+		    				</div>
+		    			</div>
+		    		</div>
+		    		<div class="address_two five-star">
+		    			<input id="address-details" type="text" placeholder="输入详细地址信息"/>
+		    		</div>
+		    		<div class="contact_div">
+		    			<label for="contact-phone" class="phone_label">联系电话:</label>
+		    			<input id="contact-phone" type="text" class="contact_phone"/>
+		    			<span class="five-star"></span>
+		    			<label class="bank_label">开户银行:</label>
+		    			<div class="opening_bank">
+		    				<select id="opening-bank">
+		    					
+		    				</select>
+		    			</div>
+		    			<label for="bank-account" class="account_label">银行账号:</label>
+		    			<input id="bank-account" type="text" class="bank_account"/>
+		    		</div>
+		    		<div class="criterion_identification">
+		    			<div id="poor-standards-div">
+		    				<span>识别标准(单选):</span>
+		    			
+			    			<button class="btn_2" data-dm="1"></button>
+			    			<label>国家标准</label>
+			    			
+			    			<button class="btn_2" data-dm="2"></button>
+			    			<label>省定标准</label>
+			    			
+			    			<button class="btn_2" data-dm="3"></button>
+			    			<label class="city_standard_label five-star">市定标准</label>
+		    			</div>
+		    			<div id="poor-attribute-div">
+		    				<span class="second_span">贫困属性(单选):</span>
+		    			
+			    			<button class="btn_2" data-dm="1"></button>
+			    			<label>一般贫困户</label>
+			    			
+			    			<button class="btn_2" data-dm="2"></button>
+			    			<label>低保贫困户</label>
+			    			<button class="btn_2" data-dm="3"></button>
+			    			<label>纯低保贫困户</label>		    			
+			    			<button class="btn_2" data-dm="4"></button>
+			    			<label class="five_guarantees_label five-star">五保贫困户</label>
+		    			</div>		    				    			
+		    		</div>
+		    		<div class="other_standard">
+		    			<div id="isOrNotJLS">
+		    				<span class="familys_army">是否军烈属:</span>
+			    			<button class="btn_2" data-dm="1"></button>
+			    			<label>是</label>
+			    			<button class="btn_2" data-dm="2"></button>
+			    			<label class="familys_army_no_label five-star">否</label>
+		    			</div>
+		    			<div id="isOrNotDSZN">
+		    				<span class="familys_onechild">是否独生子女:</span>
+			    			<button class="btn_2" data-dm="1"></button>
+			    			<label>是</label>
+			    			<button class="btn_2" data-dm="2"></button>
+			    			<label class="familys_onechild_no_label five-star">否</label>
+		    			</div>
+		    			<div id="isOrNotSNH">
+		    				<span class="familys_dualfemale">是否双女户:</span>
+			    			<button class="btn_2" data-dm="1"></button>
+			    			<label>是</label>
+			    			<button class="btn_2" data-dm="2"></button>
+			    			<label class="familys_dualfemale_no_label five-star">否</label>
+		    			</div>		    					    					    			
+		    		</div>
+		    		<div class="provincial_system_standard">
+		    			省系统指标
+		    		</div>
+		    		<div class="poverty_returning_standard">
+		    			<div id="isOrNotFP">
+		    				<span class="poverty_returning">是否返贫:</span>
+			    			<button class="btn_2" data-dm="1"></button>
+			    			<label>是</label>
+			    			<button class="btn_2" data-dm="2"></button>
+			    			<label class="poverty_returning_no_label five-star">否</label>
+		    			</div>		 
+		    			<div id="isOrNotDZXSKZBYM">
+		    				<span class="emigrate_reservoir">是否是大中型水库直补移民:</span>
+			    			<button class="btn_2" data-dm="1"></button>
+			    			<label>是</label>
+			    			<button class="btn_2" data-dm="2"></button>
+			    			<label class="emigrate_reservoir_no_label">否</label>
+		    			</div>		    			
+		    		</div>
+		    		<div class="info_last_standard">
+		    			<label for="overcome-poverty">计划脱贫年份:</label>
+		    			<input type="text" id="overcome-poverty" class="overcome_poverty"/>
+		    			
+		    			<label for="dropout-poverty" class="dropout_poverty_label">因贫辍学人数:</label>
+		    			<input type="text" id="dropout-poverty" class="dropout_poverty"/>
+		    		</div>
+		    		<div class="title-div red-bg">二、家庭成员信息</div>
+		    		<div class="clear"></div>
+		    		<div class="table-container">
+		    			<table class="family_member_information" cellspacing="0" cellpadding="0">
+			    			<thead>
+			    				<tr>
+			    					<th width="60px"></th>
+			    					<th width="60px">序号</th>
+			    					<th width="80px">姓名</th>
+			    					<th width="60px">性别</th>
+			    					<th width="190px">证件号码</th>
+			    					<th width="80px">与户主关系</th>
+			    					<th width="60px">民族</th>
+			    					<th width="80px">政治面貌</th>
+			    					<th width="80px">文化程度</th>
+			    					<th width="120px">劳动技能</th>
+			    					<th width="160px">务工情况</th>
+			    					<th width="160px">务工时间</th>
+			    					<th width="60px">是否现役军人</th>
+			    					<th width="80px">是否参加大病医疗保险</th>
+			    					<th width="80px">在校生状况</th>
+			    					<th width="160px">就读就学所在地</th>
+			    					<th width="80px">健康状况</th>
+			    					<th width="80px">是否参加商业补充保险</th>
+			    					<th width="80px">是否参加城乡居民养老保险</th>
+			    					<th width="80px">是否享受低保政策</th>		    					
+			    				</tr>
+			    			</thead>
+			    			<tbody>
+			    							    				
+			    			</tbody>
+			    		</table>
+		    		</div>		
+		    		<div class="add_delete_btn_div">
+		    			<button class="add_record_btn" id="add-record-btn">增加记录行</button>
+		    			<button class="delete_record_btn" id="delete-record-btn">删除选中记录行</button>
+		    		</div>
+		    		<div class="operation_div">
+		    			<button id="first-operation-save-btn" class="save_nextstep_btn">保存并进入下一步</button>
+		    			<button id="first-operation-cancle-btn" class="cancle_btn">取消</button>
+		    		</div>
+		    </div>
+		    <div class="poor_people_info_two">
+		    		<div class="title-div green-bg">三、致贫原因</div>
+		    		<div id="main_reason" class="main_reason">
+		    			<span>主要致贫原因(单选):</span>
+		    			<button class="btn_2" data-dm="1"></button>
+		    			<label>因病</label>		    			
+		    			<button class="btn_2" data-dm="2"></button>
+		    			<label>因残</label>		    			
+		    			<button class="btn_2" data-dm="3"></button>
+		    			<label>因学</label>		    			
+		    			<button class="btn_2" data-dm="4"></button>
+		    			<label>因灾</label>		    			
+		    			<button class="btn_2" data-dm="5"></button>
+		    			<label>缺土地</label>		    			
+		    			<button class="btn_2" data-dm="6"></button>
+		    			<label>缺水</label>		    			
+		    			<button class="btn_2" data-dm="7"></button>
+		    			<label>缺技术</label>		    			
+		    			<button class="btn_2" data-dm="8"></button>
+		    			<label>缺劳动力</label>		    			
+		    			<button class="btn_2" data-dm="9"></button>
+		    			<label>缺资金</label>		    			
+		    			<button class="btn_2" data-dm="10"></button>
+		    			<label>交通条件落后</label>		    			
+		    			<button class="btn_2" data-dm="11"></button>
+		    			<label class="five-star">自身发展动力不足</label>
+		    		</div>
+		    		<div id="other_reason" class="other_reason">
+		    			<span>其他原因(最多两项):</span>
+		    			<button class="btn_2" data-dm="1"></button>
+		    			<label>因病</label>		    			
+		    			<button class="btn_2" data-dm="2"></button>
+		    			<label>因残</label>		    			
+		    			<button class="btn_2" data-dm="3"></button>
+		    			<label>因学</label>		    			
+		    			<button class="btn_2" data-dm="4"></button>
+		    			<label>因灾</label>		    		
+		    			<button class="btn_2" data-dm="5"></button>
+		    			<label>缺土地</label>		    			
+		    			<button class="btn_2" data-dm="6"></button>
+		    			<label>缺水</label>		    			
+		    			<button class="btn_2" data-dm="7"></button>
+		    			<label>缺技术</label>		    			
+		    			<button class="btn_2" data-dm="8"></button>
+		    			<label>缺劳动力</label>		    			
+		    			<button class="btn_2" data-dm="9"></button>
+		    			<label>缺资金</label>		    			
+		    			<button class="btn_2" data-dm="10"></button>
+		    			<label>交通条件落后</label>		    			
+		    			<button class="btn_2" data-dm="11"></button>
+		    			<label class="five-star">自身发展动力不足</label>
+		    		</div>
+		    		<div class="title-div red-bg">四、返贫原因</div>
+		    		<div class="radio_div">(单选)</div>
+		    		<div id="fanpin_reason" class="fanpin_reason">
+		    			<button class="btn_2" data-dm="1"></button>
+		    			<label for="fanpin_illness">因病</label>
+		    			
+		    			<button class="btn_2" data-dm="2"></button>
+		    			<label for="fanpin_residual">因残</label>
+		    			
+		    			<button class="btn_2" data-dm="3"></button>
+		    			<label for="fanpin_study">因学</label>
+		    			
+		    			<button class="btn_2" data-dm="4"></button>
+		    			<label for="fanpin_disaster">因灾</label>
+		    			
+		    			<button class="btn_2" data-dm="5"></button>
+		    			<label for="fanpin_lowland">因婚</label>
+		    			
+		    			<button class="btn_2" data-dm="6"></button>
+		    			<label for="fanpin_lowland">缺土地</label>
+		    			
+		    			<button class="btn_2" data-dm="7"></button>
+		    			<label for="fanpin_lowwater">缺水</label>
+		    			
+		    			<button class="btn_2" data-dm="8"></button>
+		    			<label for="fanpin_lowtechnology">缺技术</label>
+		    			
+		    			<button class="btn_2" data-dm="9"></button>
+		    			<label for="fanpin_labor">缺劳动力</label>
+		    			
+		    			<button class="btn_2" data-dm="10"></button>
+		    			<label for="fanpin_money">缺资金</label>
+		    			
+		    			<button class="btn_2" data-dm="11"></button>
+		    			<label for="fanpin_lowtraffic">市场原因</label>
+		    			
+		    			<button class="btn_2" data-dm="12"></button>
+		    			<label for="fanpin_lowself">产业项目失败</label>
+		    		</div>
+		    		<div class="title-div blue-bg">五、收入情况</div>
+		    		<div class="income_type">
+		    			<div class="col-one-div">
+		    				工资性收入:
+		    				<input id="wagesIncome" type="text" />
+		    				元
+		    			</div>		    			
+		    			<div class="col-two-div">
+		    				转移性收入:
+		    				<input id="transferIncome" type="text" />
+		    				元
+		    			</div>		    			
+		    			<div class="col-three-div">
+		    				养老保险金:
+		    				<input id="endowment" type="text" />
+		    				元
+		    			</div>			    	
+		    			<div class="col-one-div">
+		    				生产经营性收入:
+		    				<input id="productIncome" type="text" />
+		    				元
+		    			</div>		    			
+		    			<div class="col-two-div">
+		    				计划生育金:
+		    				<input id="familyPlan" type="text" />
+		    				元
+		    			</div>		    			
+		    			<div class="col-three-div">
+		    				生态补偿金:
+		    				<input id="ecological" type="text" />
+		    				元
+		    			</div>	
+		    			<div class="col-one-div">
+		    				财产性收入:
+		    				<input id="propertyIncome" type="text" />
+		    				元
+		    			</div>		    			
+		    			<div class="col-two-div">
+		    				低保金:
+		    				<input id="lowInsurance" type="text" />
+		    				元
+		    			</div>		    			
+		    			<div class="col-three-div">
+		    				其他转移性收入:
+		    				<input id="otherTransferIncome" type="text" />
+		    				元
+		    			</div>	
+		    			<div class="col-one-div">
+		    				生产经营性支出:
+		    				<input id="productCost" type="text" />
+		    				元
+		    			</div>		    			
+		    			<div class="col-two-div">
+		    				五保金:
+		    				<input id="fiveInsurance" type="text" />
+		    				元
+		    			</div>	
+		    		</div>
+		    		<div class="clear"></div>
+		    		<div class="provincial-system-standard-income">省系统指标（细分指标）</div>
+		    		<div class="provincial-system-standard-type">
+		    			<div class="col-one-div">
+		    				农资综合补贴:
+		    				<input id="farmMaterials" type="text" />
+		    				元
+		    			</div>		    			
+		    			<div class="col-two-div">
+		    				粮食直接补贴:
+		    				<input id="foodAid" type="text" />
+		    				元
+		    			</div>		    			
+		    			<div class="col-three-div">
+		    				新农合医疗保险:
+		    				<input id="medicare" type="text" />
+		    				元
+		    			</div>	
+		    			<div class="col-one-div">
+		    				医疗救助金:
+		    				<input id="medicalAid" type="text" />
+		    				元
+		    			</div>		    			
+		    			<div class="col-two-div">
+		    				大病医疗商业补充保险:
+		    				<input id="medicalBusiness" type="text" />
+		    				元
+		    			</div>		    			
+		    			<div class="col-three-div">
+		    				利息股息红利收入:
+		    				<input id="interestIncome" type="text" />
+		    				元
+		    			</div>	
+		    			<div class="col-one-div">
+		    				征地补偿款:
+		    				<input id="expropriation" type="text" />
+		    				元
+		    			</div>		    			
+		    			<div class="col-two-div">
+		    				租赁收入:
+		    				<input id="rentalIncome" type="text" />
+		    				元
+		    			</div>	
+		    		</div>
+		    		<div class="clear"></div>
+		    		<div class="second_operation_div">
+		    			<button id="second-operation-back-btn" class="back_last_step">上一步</button>
+		    			<button id="second-operation-next-btn" class="next_step">下一步</button>
+		    		</div>
+		    </div>
+		    <div class="poor_people_info_three">
+		    		<div class="title-div green-bg">六、生产生活条件</div>
+		    		<div class="production-living-conditions-type">
+		    			<div class="col-one-div">
+		    				耕地面积:
+		    				<input id="cultivatedArea" type="text" />
+		    				亩
+		    			</div>		    			
+		    			<div class="col-two-div" id="productElectric">
+		    				是否通生产用电:
+		    				<button class="btn_2 marigin_left_25" data-dm="1"></button>是
+		    				<button class="btn_2 marigin_left_25" data-dm="2"></button>否
+		    			</div>		    			
+		    			<div class="col-three-div">
+		    				主要燃料类型:
+		    				<div class="mainFuelType">
+		    					<select id="mainFuelType">
+		    						
+		    					</select>
+		    				</div>		    				
+		    			</div>	
+		    			<div class="col-one-div">
+		    				有效灌溉面积:
+		    				<input id="irrigatedArea" type="text" />
+		    				亩
+		    			</div>		    			
+		    			<div class="col-two-div" id="liveElectric">
+		    				是否通生活用电:
+		    				<button class="btn_2 marigin_left_25" data-dm="1"></button>是
+		    				<button class="btn_2 marigin_left_25" data-dm="2"></button>否
+		    			</div>		    			
+		    			<div class="col-three-div" id="joinArtel">
+		    				是否加入农民专业合作社:
+		    				<button class="btn_2 marigin_left_25" data-dm="1"></button>是
+		    				<button class="btn_2 marigin_left_25" data-dm="2"></button>否
+		    			</div>	
+		    			<div class="col-one-div">
+		    				林地面积:
+		    				<input id="forestArea" type="text" />
+		    				亩
+		    			</div>		    			
+		    			<div class="col-two-div kilometre">
+		    				与村主干路距离:
+		    				<input id="distance" type="text" />		    				
+		    			</div>		    			
+		    			<div class="col-three-div" id="toilet">
+		    				有无卫生厕所:
+		    				<button class="btn_2 marigin_left_25" data-dm="1"></button>是
+		    				<button class="btn_2 marigin_left_25" data-dm="2"></button>否
+		    			</div>	
+		    			<div class="col-one-div">
+		    				退耕还林面积:
+		    				<input id="grainGreenArea" type="text" />
+		    				亩
+		    			</div>		    			
+		    			<div class="col-two-div">
+		    				人户路类型:
+		    				<div class="entryRoadType">
+		    					<select id="entryRoadType">
+		    						
+		    					</select>
+		    				</div>
+		    			</div>		    			
+		    			<div class="col-three-div" id="drinkingTrouble">
+		    				饮水是否困难:
+		    				<button class="btn_2 marigin_left_25" data-dm="1"></button>是
+		    				<button class="btn_2 marigin_left_25" data-dm="2"></button>否
+		    			</div>	
+		    			<div class="col-one-div">
+		    				林果面积:
+		    				<input id="forfruitArea" type="text" />
+		    				亩
+		    			</div>		    			
+		    			<div class="col-two-div square-meter">
+		    				住房面积:
+		    				<input id="houseArea" type="text" />		    				
+		    			</div>		    			
+		    			<div class="col-three-div" id="drinkingSave">
+		    				饮水是否安全:
+		    				<button class="btn_2 marigin_left_25" data-dm="1"></button>是
+		    				<button class="btn_2 marigin_left_25" data-dm="2"></button>否
+		    			</div>	
+		    			<div class="col-one-div">
+		    				牧草地面积:
+		    				<input id="pastureArea" type="text" />
+		    				亩
+		    			</div>		    			
+		    			<div class="col-two-div mu">
+		    				水面面积:
+		    				<input id="waterArea" type="text" />		    				
+		    			</div>	
+		    		</div>
+		    		<div class="clear"></div>
+		    		<div class="title-div red-bg">七、帮扶责任人</div>
+		    		<table class="help-person-table" cellspacing="0" cellpadding="0">
+		    			<thead>
+		    				<tr>
+		    					<th width="40px"></th>
+		    					<th width="40px">序号</th>
+		    					<th width="100px">姓名</th>
+		    					<th width="60px">性别</th>
+		    					<th width="120px">政治面貌</th>
+		    					<th width="210px">帮扶单位名称</th>
+		    					<th width="100px">帮扶开始时间</th>
+		    					<th width="100px">帮扶结束时间</th>
+		    					<th width="230px">单位地址</th>
+		    					<th width="120px">联系电话</th>
+		    				</tr>
+		    			</thead>
+		    			<tbody>
+		    				
+		    			</tbody>
+		    		</table>
+		    		<div class="add_delete_btn_div">
+		    			<button class="add_record_btn" id="three-add-record-btn">增加记录行</button>
+		    			<button class="delete_record_btn" id="three-delete-record-btn">删除选中记录行</button>
+		    		</div>
+		    		<div class="operation_div">
+		    			<button id="three-operation-back-btn" class="back_last_step">上一步</button>
+		    			<button id="three-operation-sure-btn" class="next_step">提交完成</button>
+		    		</div>
+		    </div>
+		</div>
+			
+		<script type="text/javascript" src="../static/js/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="../static/dist/tether.js" ></script>
+		<script type="text/javascript" src="../static/dist/select.js" ></script>
+		<script type="text/javascript" src="../static/js/aid/common.js"></script>
+		<script type="text/javascript" src="../static/js/aid/config.js" ></script>
+		<script type="text/javascript" src="../static/js/aid/poor-people.js" ></script>
+		<script type="text/javascript" src="../static/dist/notice.js" ></script>
+	</body>
+</html>
+

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+<title>精准扶贫应用系统-贫困村</title>
+<link rel="shortcut icon" type="image/x-icon" href="favicon_aid.ico" />
+    <link rel="stylesheet" href="../static/layui/css/layui.css"/>
+    <link rel="stylesheet" href="../static/css/aid/common.css"/>
+    <link rel="stylesheet" href="../static/css/aid/mpoor.css"/>
+</head>
+<script>
+    const userobj=JSON.parse(localStorage.getItem('userobj'));
+</script>
+<body>
+<header></header>
+
+<div class="main wd1638" style="">
+    <div class="left h906"  data="left"></div>
+    <div class="content">
+        <div class="content-top barea" style="display: none">
+            <select name="year" id="year" lay-verify="required">
+                <option value="2014" selected>2014</option>
+                <option value="2015">2015</option>
+                <option value="2016">2016</option>
+                <option value="2017">2017</option>
+            </select>
+        </div>
+
+        <div class="c1 barea">
+            <div class="lbheader bg-purple"  id="countytit">
+                <!--铅山县贫困户数  1401户/3300人-->
+            </div>
+            <div class="chart1" id="chart1"></div>
+        </div>
+        <div class="c1 mt16 barea">
+            <div class="lbheader bg-lpurple">
+                主要致贫原因
+            </div>
+            <div class="chart1" id="chart2"></div>
+        </div>
+        <div class="c1 mt16 barea">
+            <div class="lbheader bg-lorange">
+                县土地资源
+            </div>
+            <div class="chart1"  id="chart3"></div>
+        </div>
+
+        <div class="c2  barea">
+            <div class="lbheader bg-lbule">
+                贫困户人均收入范围统计图
+            </div>
+            <div class="chart2"  id="chart4"></div>
+        </div>
+
+        <div class="c2 mt16 barea">
+            <div id="tit" class="lbheader">
+                <span class="spactive sl">基础设施</span>
+                <span class="sr spnormal">帮扶措施</span>
+            </div>
+            <div id="cont">
+                <div class="chart2" >
+                    <ul class="f3">
+                        <li>
+                            <div class="f3title">是否通二级公路</div>
+                            <div class="tit-orange" id="isroad">是</div>
+                            <div class="f3title">交通部门资金投入</div>
+                            <div class="tit-orange" id="moneyinput">1900万元</div>
+                        </li>
+                        <li>
+                            <div class="f3title">行政村通公路情况</div>
+                            <div  id="chart5" ></div>
+                        </li>
+                        <li>
+                            <div class="f3title">行政村通客运班车情况</div>
+                            <div  id="chart6" ></div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="chart2" >
+                    <div class="chart2"  id="chart7"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<input type="hidden" value="361102000000" id="countyId">
+<footer> </footer>
+<script type="text/javascript" src="../static/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="//echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+<script src="../static/layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript" src="../static/js/aid/config.js"></script>
+<script type="text/javascript" src="../static/js/aid/common.js"></script>
+<script type="text/javascript" src="../static/js/aid/mcounty.js"></script>
+<script>
+
+
+</script>
+</body>
+</html>

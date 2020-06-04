@@ -1,0 +1,277 @@
+*{
+	margin:0;
+	padding: 0;
+}
+@font-face {
+	font-family:"方正兰亭中黑";
+	src: url('../../font/FZLHGBK.TTF');
+}
+input:focus{outline: none;}
+body{
+	background-image: linear-gradient(180deg, #459dff 0%, #74eead 100%);
+	background-repeat: no-repeat;
+	background-size: cover;
+	font-family: "方正兰亭中黑";
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;	
+}
+
+input[type=button],a,input[type=checkbox]{
+	cursor: pointer;
+}
+input::-webkit-input-placeholder { /* WebKit browsers */  
+  color: #BCBCBC;  
+}  
+input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */  
+  color: #BCBCBC;  
+}  
+input::-moz-placeholder { /* Mozilla Firefox 19+ */  
+  color: #BCBCBC;  
+}  
+input:-ms-input-placeholder { /* Internet Explorer 10+ */  
+  color: #BCBCBC;  
+}
+.container{
+	height: 1080px;
+	width: 1200px;
+	margin: 154px auto 0;
+}
+.banner{
+	height: 36px;
+	width: 430px;
+	font-size: 36px;
+	line-height: 36px;
+	letter-spacing: 3px;
+	margin: 0 auto;
+}
+.banner span{
+	color: #fff;
+	/*font-family: FZYDCHJW--GB1-0;*/
+}
+.bodyContent,.bodyContent1{
+	height: 340px;
+	width: 794px;
+	margin: 130px auto 0;
+}
+.bodyleft,.bodyleft1{
+	height: 300px;
+	width: 396px;
+	padding-top: 42px;
+	background-image: linear-gradient(0deg,#3bf2da 0%,#3cb8ff 100%);
+	box-shadow: 0px 0px 32px 0px rgba(70, 126, 253, 0.3);
+	float: left;
+}
+.bodyleftimage{
+	height: 283px;
+	width: 300px;
+	margin: 0 auto;
+	background-size: 100% 100%;
+	background-image: url(../../img/aid/login-body-left.png);
+}
+/*登陆*/
+.bodyright{
+	width: 326px;
+	height: 292px;
+	float: left;
+	padding: 24px 35px;
+	background-color: #fff;
+	border: solid 1px rgba(221, 221, 221, 0.21);
+}
+
+.bodyBanner{
+	width: 210px;
+	height: 18px;
+	margin-bottom: 16px;
+	font-size: 18px;
+	line-height: 18px;
+	letter-spacing: 0px;
+	color: #60d2ff;
+}
+.line1{
+	width: 326px;
+	height: 2px;
+	background-color: #60D2FF;
+	margin-bottom: 27px;
+}
+.user,.user1{
+	height: 41px;
+	width: 330px;
+	margin: 0 auto 24px;
+}
+.tips, .tips1{
+	float: left;
+	line-height: 41px;
+	color: #bcbcbc;
+}
+.txtBox,.txtBox1{
+	float: right;
+	width: 270px;
+	height: 41px;
+}
+
+.txtBox input{
+	width: 263px;
+	height: 41px;
+	background-color: #ffffff;
+	border: solid 1px #dddddd;
+	text-indent: 10px;
+}
+.pwdOperation{
+	height:24px ;
+	width: 263px;
+	margin-left: 60px;
+	margin-top: -4px;
+}
+.pwdOperation span{
+	line-height: 13px;
+	vertical-align: top;
+}
+.pwd{
+	font-size: 12px;
+	height:14px;
+}
+.remPwd{
+	float: left;
+	color: #bcbcbc;
+}
+.remPwd input{
+	margin-right: 11px;
+	line-height: 44px;
+}
+.forPwd{
+	float: right;
+}
+.forPwd a{
+	text-decoration: none;
+	color: #bcbcbc;
+}
+.button{
+	width: 328px;
+	height: 41px;
+	margin: 0 auto;
+}
+.button input{
+	width: 328px;
+	height:41px;
+	background-color: #65cff9;
+	color: #fff;
+	letter-spacing: 3px;
+	font-size: 16px;
+	border: none;
+	border: solid 1px;
+	border-radius: 5px;
+}
+.loginBtn{
+	margin-top: 10px;
+}
+.settleTip,.settleTip1{
+	height: 12px;
+	width: 176px;
+	margin: 15px auto 0;
+	font-size: 14px;
+	color: #BCBCBC;
+}
+.settleBtn a{
+	font-size: 14px;
+	text-decoration: none;
+}
+/*.settleBtn a :hover{
+	color: #65cff9;
+}*/
+/*注册*/
+.bodyContent1{
+	height: 420px;
+}
+.bodyleft1{
+	height: 358px;
+	padding-top: 62px;
+}
+.user1{
+	height: 32px;
+	margin: 0 auto 19px;
+	font-size: 13px;
+	
+}
+.tips1{
+	height: 32px;
+	line-height: 32px;
+}
+.txtBox1{
+	height: 32px;
+	font-size: 13px;
+}
+.txtBox1 input{
+	width: 263px;
+	height: 30px;
+	background-color: #ffffff;
+	text-indent: 10px;
+}
+
+.checkCodebox{
+	height: 32px;
+	width: 160px;
+	margin-left: 21px;
+	float: left;
+	font-size: 13px;
+}
+.checkCodebox  input{
+	text-indent: 10px;
+	height: 30px;
+	width: 160px;
+}
+.clickReceive{
+	display: inline-block;
+	float: left;
+	width: 95px;
+	font-size: 13px;
+	/*border-radius: 5px;*/
+}
+.clickReceive img{
+	cursor: pointer;
+	height: 32px;
+	width: 95px;
+	margin-left: 10px;
+}
+.clickReceive input{
+	border: none;
+	height: 32px;
+	width: 95px;
+	margin-left: 10px;
+	color: #FFF;
+	background-color: #65cff9;
+	border: solid 1px;
+	border-radius: 5px;
+}
+.bodyright_Settle{
+	width: 396px;
+	height: 373px;
+	padding: 28px 0 17px 0;
+	float: right;
+	background-color: #fff;
+	border: solid 1px rgba(221, 221, 221, 0.11);
+}
+.forPwd1{
+	float: right;
+}
+.forPwd1 a{
+	text-decoration: none;
+	color: #fff;
+}
+a.select-theme-chosen{
+	width: 85px;
+	height: 32px;
+	line-height: 27px !important;
+	font-size: 12px !important;
+}
+.txtBox1>a{
+	background-color: #ffffff !important;
+	border-radius: 0 !important;
+	border: 1px solid #dfdfdf !important;
+}
+.settleTip1{
+	margin: 12px auto 0;
+}
+input{
+	border: solid 1px #DFDFDF;
+}

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>走访记录</title>
+		<link rel="shortcut icon" type="image/x-icon" href="favicon_aid.ico" />
+	    <link rel="stylesheet" href="../static/css/aid/common.css"/>
+	    <link rel="stylesheet" href="../static/css/aid/move-record.css" />
+	    <link rel="stylesheet" href="../static/css/aid/mobiscroll.custom.min.css" />
+	    <link rel="stylesheet" href="../static/css/aid/flatpickr.min.css" />
+		<script>
+			const userobj=JSON.parse(localStorage.getItem('userobj'));
+		</script>
+	</head>
+	<body>
+		<header></header>
+
+		<div class="main">
+		    <div class="left"  data="left"></div>
+		    <div class="content">
+		        <div class="content_body">
+		        	<div class="btn">
+		        		<input type="button" class="btn_new" value="+新建走访记录" onclick="addRecord();"/>
+		        	</div>
+		        		<table class="clearfix moveRecordTable" cellspacing="0" cellpadding="0">
+		        			<thead>
+		        				<tr>
+		        					<th width="80px">序号</th>
+		        					<th width="200px">走访时间</th>
+		        					<th width="160px">走访主题</th>
+		        					<th width="498px">走访内容</th>
+		        					<th width="120px">走访人</th>
+		        					<th width="200px">创建时间</th>
+		        					<th width="183px">操作</th>
+		        				</tr>
+		        			</thead>
+		        			<tbody>
+		        				<!--<tr>
+		        					<td>1</td>
+		        					<td>2</td>
+		        					<td>3</td>
+		        					<td>4</td>
+		        					<td>5</td>
+		        					<td>6</td>
+		        					<td>7</td>
+		        					<td>8</td>
+		        				</tr>
+		        				<tr>
+		        					<td>1</td>
+		        					<td>2</td>
+		        					<td>3</td>
+		        					<td>4</td>
+		        					<td>5</td>
+		        					<td>6</td>
+		        					<td>7</td>
+		        					<td>8</td>
+		        				</tr>-->
+		        			</tbody>
+		        		</table>
+		        		<!--<div class="addOrDelBtn">
+		        			<a>增加记录行</a>
+		        			<a>删除选中记录行</a>
+		        		</div>-->
+		        		<div class="page-div">
+				    		<p>
+				    			总计<span id="moveRecordNum"></span>条数据
+				    		</p>
+				    		<div class="page" id="page_area">
+				    			
+            				</div>
+				    </div>
+		        </div>
+		    </div>
+		</div>
+		<footer> </footer>
+		<div class="clear"></div>
+		<!--弹出层-->
+		<div id="fade" class="black_overlay">
+			<div id="MyDiv" class="white_content">
+				<form action="" method="post" class="basic-grey">
+					<div class="closeBtn"><img src="../static/img/aid/close.png"/ onclick="CloseDiv('MyDiv','fade')"></div>
+					<div class="banner2" id="addVisitRecorder">新增-走访记录</div>
+					<div class="body2" id="people">
+						<!--人-->
+						<div class="people" id="familyMasterName">
+							<span>被走访人：</span>
+							<span id="#"></span>
+						</div>
+						<div class="people" id="visitorName">
+							<span>走&nbsp;访&nbsp;人：</span>
+							<span id="#"></span>
+						</div>
+						<!--时间控件-->
+						<div class="moveT">
+					     	<span>走访时间:</span>
+					      	<input id="demo_datetime" class="flatpickr flatpickr-input active" data-enable-time="true" data-enable-seconds="true" placeholder="点击选择" readonly="readonly">
+					   </div>
+					   <!--走访人多选-->
+						<div class="moveP">
+							<span>其他走访人:</span>
+							<input type="text" id="otherVisitor"/>
+						</div>
+						<!--走访主题-->
+						<div class="moveT">
+							<span>走访主题:</span>
+							<input class="moveTitleBox" type="text" id="moveTitle"/>
+						</div>
+						<!--走访内容-->
+						<div class="moveContent">
+							<span>走访内容:</span>
+							<input type="text" id="visitContent"/>
+						</div>
+						<!--确认&取消-->
+						<div class="btns">
+						    <input type="button" class="button1" value="确定" onclick="addOrEditMoveRecord()" />
+							<input type="button" class="button2" value="取消" onclick="CloseDiv('MyDiv','fade')"/>
+						</div>
+						</label>
+					</div>	
+				</form>
+			</div>
+		</div>
+		
+		<script>
+		</script>
+		<script type="text/javascript" src="../static/js/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="../static/js/aid/flatpickr.min.js" ></script>
+		<script type="text/javascript" src="../static/js/aid/common.js" ></script>
+		<script type="text/javascript" src="../static/js/aid/config.js" ></script>
+		<script type="text/javascript" src="../static/js/aid/move-record.js" ></script>	
+		
+		<!--控件-->
+		<!--
+		<script>
+		var theme = "ios";
+        var mode = "scroller";
+        var display = "bottom";
+        var lang="zh";
+        
+		$('#demo_datetime').mobiscroll().datetime({
+            theme: theme,
+            mode: mode,
+            display: display,
+            lang: lang,
+            dateFormat:"yyyy-mm-dd",
+            minDate: new Date(2000,3,10,9,22),
+            maxDate: new Date(2030,7,30,15,44),
+            stepMinute: 1
+        });
+		</script>-->
+	</body>
+</html>

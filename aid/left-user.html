@@ -1,0 +1,33 @@
+<ul class="nav-type">
+    <li class="tab  active" data-page="user" data="user-muser"><span>用户管理</span></li>
+</ul>
+<div class="nav-area barea">
+    <div class="lheader-user bg-green">
+        <p class="pt30"><img src="../static/img/users.png" width="67px" height="67px"></p>
+        <p>admin</p>
+        <p>角色：管理员</p>
+    </div>
+    <ul class="pslider-user pt30">
+        <li id="muser"><a href="user.html?flag=user-muser"><i class="user1" ></i>用户列表</a></li>
+        <li id="auser"><a href="user.html?flag=user-auser"><i class="usera" ></i>新增用户</a></li>
+    </ul>
+</div>
+<script>
+    $(function () {
+        initleft($(".tab"),$(".pslider"));
+        var _flag=getUrlParam('flag');
+        $("#"+_flag).addClass('user-active');
+        if(_flag=='user-muser'){
+            $('.usera').css("background-position","0 79px");
+            $('.usera').css("margin-left","34px");
+            $('.auser a').css("color","green");
+            $('#muser a').css("color","#70d8a1");
+        }
+        if(_flag=='user-auser'){
+            $('.user1').css("background-position","0 31px");
+            $('.usera').css("background-position","0 111px");
+            $('.user1').css("margin-left","34px");
+            $('#auser a').css("color","#70d8a1");
+        }
+    })
+</script>
